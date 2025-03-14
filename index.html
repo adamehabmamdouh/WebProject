@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition, Gym, and Supplements</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #F8F9FA; /* Light gray background */
+            color: #333333; /* Dark gray text */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1A1A1A; /* Dark background */
+            color: #FFFFFF; /* White text */
+        }
+
+        body.dark-mode * {
+            color: #FFFFFF !important; /* Force all text to white in dark mode */
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 69, 0, 0.9); /* Orange Red with transparency */
+            padding: 15px 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav:hover {
+            background-color: rgba(30, 144, 255, 0.9); /* Dodger Blue on hover */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF; /* White text for links */
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700; /* Gold on hover */
+        }
+
+        /* Main Content */
+        .content {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #FF4500; /* Orange Red for headings */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .content p {
+            font-size: 20px;
+            line-height: 1.6;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #FFFFFF; /* White text */
+            background-color: #FF4500; /* Orange Red background */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #1E90FF; /* Dodger Blue on hover */
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 69, 0, 0.9); /* Orange Red with transparency */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #FFFFFF; /* White text */
+        }
+
+        /* Horizontal Sections */
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+        }
+
+        .card {
+            background-color: #FFFFFF; /* White background */
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            margin: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3); /* Orange Red shadow on hover */
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #FF4500; /* Orange Red for headings */
+        }
+
+        .card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333333; /* Dark gray text */
+        }
+
+        /* Popup Container */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            color: #333333; /* Dark gray text */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .popup-container.active {
+            display: block;
+        }
+
+        .popup-button, .darkmode-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #FFFFFF; /* White text */
+            background-color: #FF4500; /* Orange Red background */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .popup-button:hover, .darkmode-button:hover {
+            background-color: #1E90FF; /* Dodger Blue on hover */
+            transform: scale(1.1);
+        }
+
+        /* Image Container */
+        .image-container {
+            width: 100%; /* Full width of the window */
+            margin: 0; /* Remove any margins */
+            padding: 0; /* Remove any padding */
+            position: relative;
+            text-align: center;
+        }
+
+        .quote-image {
+            width: 100%; /* Full width of the container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove any inline spacing */
+        }
+
+        .quote-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF; /* White text */
+            font-size: 24px;
+            font-style: italic;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            padding: 20px;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        /* New Styles for Animated Cards */
+        .animated-cards {
+            display: flex;
+            justify-content: center; /* Center the cards horizontally */
+            align-items: center; /* Center the cards vertically */
+            padding: 50px 20px;
+            margin-top: 50px;
+            min-height: 60vh; /* Ensure the section takes up enough vertical space */
+        }
+
+        .animated-card {
+            width: 400px;
+            height: 250px;
+            background-color: #FFFFFF; /* White background */
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: cardEntry 1s ease forwards;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 20px; /* Add spacing between cards */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .animated-card:nth-child(1) { animation-delay: 0.2s; }
+        .animated-card:nth-child(2) { animation-delay: 0.4s; }
+        .animated-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .animated-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(255, 69, 0, 0.3); /* Orange Red shadow on hover */
+        }
+
+        .animated-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 69, 0, 0.4), /* Orange Red gradient */
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .animated-card:hover::before {
+            left: 100%;
+        }
+
+        .animated-card p {
+            font-size: 24px; /* Larger text inside cards */
+            font-weight: bold;
+            color: #FF4500; /* Orange Red text */
+            z-index: 1; /* Ensure text is above the gradient */
+        }
+
+        @keyframes cardEntry {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contact Us Section */
+        .contact-us {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 28px;
+            color: #FF4500; /* Orange Red for headings */
+            margin-bottom: 20px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-item {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #333333; /* Dark gray text */
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #FF4500; /* Orange Red for icons */
+        }
+
+        .contact-link {
+            color: #FF4500; /* Orange Red for links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #1E90FF; /* Dodger Blue on hover */
+            text-decoration: underline;
+        }
+
+        .contact-message {
+            font-size: 16px;
+            color: #555555; /* Gray text */
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Dark Mode Compatibility */
+        body.dark-mode .contact-us {
+            background-color: #2C2C2C; /* Dark background */
+        }
+
+        body.dark-mode .contact-item {
+            color: #FFFFFF; /* White text */
+        }
+
+        body.dark-mode .contact-message {
+            color: #CCCCCC; /* Light gray text */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/memberships">Memberships</a></li>
+            <li><a href="/supplements">Supplements</a></li>
+            <li><a id="login-link" href="/auth/login">Login</a></li>
+        </ul>
+    </nav>
+
+    
+
+    <button class="popup-button" onclick="togglePopup()">Quick Test</button>
+    <button class="darkmode-button" onclick="toggleDarkMode()">Dark Mode</button>
+
+    <container class="popup-container" id="popupContainer">
+        <!-- Popup content remains the same -->
+    </container>
+
+    <section class="cards services" id="services">
+        <!-- Cards content remains the same -->
+    </section>
+
+    <!-- New Section for Animated Cards -->
+    <section class="animated-cards">
+        <div class="animated-card">
+            <p>Fitness Plans</p>
+        </div>
+        <div class="animated-card">
+            <p>Nutrition Tips</p>
+        </div>
+        <div class="animated-card">
+            <p>Supplements Guide</p>
+        </div>
+    </section>
+
+    <div class="contact-us">
+        <h2 class="contact-title">Contact Us</h2>
+        <ul class="contact-list">
+            <li class="contact-item">
+                <span class="contact-icon">📞</span>
+                <strong>Phone:</strong> +1 (555) 123-4567 | +1 (555) 987-6543 | +1 (555) 246-8100
+            </li>
+            <li class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <strong>Email:</strong> 
+                <a href="mailto:support@fitnesshub.com" class="contact-link">support@fitnesshub.com</a> | 
+                <a href="mailto:info@fitnesshub.com" class="contact-link">info@fitnesshub.com</a>
+            </li>
+            <li class="contact-item">
+                <span class="contact-icon">📸</span>
+                <strong>Instagram:</strong> 
+                <a href="https://www.instagram.com/FitnessHubOfficial" target="_blank" class="contact-link">@FitnessHubOfficial</a>
+            </li>
+        </ul>
+        <p class="contact-message">
+            Feel free to reach out to us anytime! We're here to help you on your fitness journey.
+        </p>
+    </div>
+
+    <script>
+        function togglePopup() {
+            const popupContainer = document.getElementById('popupContainer');
+            popupContainer.classList.toggle('active');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            // Update popup container background based on mode
+            const popup = document.querySelector('.popup-container');
+            if (document.body.classList.contains('dark-mode')) {
+                popup.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                popup.style.color = 'white';
+            } else {
+                popup.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                popup.style.color = 'black';
+            }
+        }
+    </script>
+</body>
+</html>
