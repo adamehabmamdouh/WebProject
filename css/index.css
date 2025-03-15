@@ -16,7 +16,7 @@ body.dark-mode {
 }
 
 body.dark-mode * {
-    color: #FFFFFF !important; /* Force all text to white in dark mode */
+    color: #A8A8A8 !important; /* Softer gray for better readability */
 }
 
 /* Navigation Bar */
