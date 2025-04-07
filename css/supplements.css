@@ -1,0 +1,136 @@
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #F8F9FA;
+    color: #333333;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1A1A1A;
+    color: #A8A8A8;
+}
+
+body.dark-mode * {
+    color: #A8A8A8 !important;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    background-color: rgba(255, 69, 0, 0.9); /* Orange Red */
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+}
+
+header:hover {
+    background-color: rgba(30, 144, 255, 0.9); /* Dodger Blue on hover */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #FF4500; /* Orange Red */
+    border-bottom: 2px solid #1E90FF; /* Dodger Blue */
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+.supplement {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.supplement:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2); /* Orange Red shadow */
+}
+
+.supplement-name {
+    color: #1E90FF; /* Dodger Blue */
+    font-size: 1.5em;
+    margin-top: 0;
+    transition: color 0.3s ease;
+}
+
+.supplement:hover .supplement-name {
+    color: #FF4500; /* Orange Red on hover */
+}
+
+.category {
+    display: inline-block;
+    background-color: #FF4500; /* Orange Red */
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.supplement:hover .category {
+    background-color: #1E90FF; /* Dodger Blue on hover */
+}
+
+.usage, .restrictions {
+    margin-top: 15px;
+}
+
+.restrictions {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .supplement {
+    background-color: #2C2C2C;
+}
+
+body.dark-mode .supplement-name {
+    color: #FFD700; /* Gold in dark mode */
+}
+
+/* Button styles to match your theme */
+.darkmode-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #FF4500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.darkmode-button:hover {
+    background-color: #1E90FF;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: rgba(255, 69, 0, 0.9);
+    border-radius: 8px;
+    color: white;
+}
