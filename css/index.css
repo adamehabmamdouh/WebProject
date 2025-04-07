@@ -223,30 +223,33 @@ footer p {
 /* New Styles for Animated Cards */
 .animated-cards {
     display: flex;
-    justify-content: center; /* Center the cards horizontally */
-    align-items: center; /* Center the cards vertically */
-    padding: 50px 20px;
-    margin-top: 50px;
-    min-height: 60vh; /* Ensure the section takes up enough vertical space */
-}
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    margin-top: 20px;
+    margin-bottom: 100PX;
+    min-height: auto;
+} 
+
 
 .animated-card {
-    width: 400px;
-    height: 250px;
-    background-color: #FFFFFF; /* White background */
-    border-radius: 15px;
+    width: 360px;
+    height: 200px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
     position: relative;
     overflow: hidden;
-    transform: translateY(50px);
+    transform: translateY(30px);
     opacity: 0;
     animation: cardEntry 1s ease forwards;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 20px; /* Add spacing between cards */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 0 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ /* Subtle shadow */
 }
 
 .animated-card:nth-child(1) { animation-delay: 0.2s; }
@@ -288,7 +291,7 @@ footer p {
 @keyframes cardEntry {
     0% {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(30px);
     }
     100% {
         opacity: 1;
@@ -363,3 +366,54 @@ body.dark-mode .contact-item {
 body.dark-mode .contact-message {
     color: #CCCCCC; /* Light gray text */
 }
+/* Banner Styles */
+.banner-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px; /* Adjust based on nav height */
+    margin-bottom: 20px;
+    border-bottom: 20px;
+    
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .banner-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+
