@@ -1,0 +1,158 @@
+
+
+.split-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.split-card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.split-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2);
+}
+
+.split-title {
+    color: #FF4500;
+    font-size: 28px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1E90FF;
+    padding-bottom: 8px;
+}
+
+.day-title {
+    color: #1E90FF;
+    font-size: 22px;
+    margin: 20px 0 10px;
+}
+
+.exercise-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.exercise-item {
+    background-color: #F8F9FA;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.exercise-item:hover {
+    background-color: #e9ecef;
+}
+
+.exercise-name {
+    font-weight: bold;
+    color: #333333;
+}
+
+.exercise-sets {
+    color: #FF4500;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .split-card {
+    background-color: #2C2C2C;
+}
+
+body.dark-mode .exercise-item {
+    background-color: #1A1A1A;
+}
+
+body.dark-mode .exercise-name {
+    color: #A8A8A8;
+}
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 69, 0, 0.9); /* Orange Red with transparency */
+    padding: 15px 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+nav:hover {
+    background-color: rgba(30, 144, 255, 0.9); /* Dodger Blue on hover */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #FFFFFF; /* White text for links */
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFD700; /* Gold on hover */
+}
+.banner-container {
+    width: 100%;
+    height: 600px; /* Container height remains unchanged */
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px; /* Accounts for fixed nav bar */
+    margin-bottom: 20px;
+}
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintains aspect ratio while filling container */
+    object-position: center 30%; /* Shows more of the top portion (adjust 30% as needed) */
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.banner-title {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .banner-overlay {
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay in dark mode */
+}
