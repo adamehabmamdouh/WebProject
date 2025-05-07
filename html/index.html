@@ -3,77 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition, Gym, and Supplements</title>
-   <link rel="stylesheet" href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\css\index.css">
+    <title>Elevate Fitness</title>
+    <link rel="stylesheet" href="C:\Users\IT\Desktop\webproject\WebProject\css\index.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\index.html">Home</a></li>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\ABOUT.html">About</a></li>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\Memberships.html">Memberships</a></li>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\login.html">login</a></li>
-        </ul>
-    </nav>
-<!-- Banner Section -->
-<div class="banner-container">
-    <img src="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\img\homephoto.avif" alt="Fitness Center Banner" class="banner-image">
-    <div class="banner-overlay">
-        <h1 class="banner-title">Transform Your Fitness Journey</h1>
-        <p class="banner-subtitle">Expert nutrition and supplement guidance</p>
-    </div>
-</div>
-    
+    <header class="main-header">
+        <nav class="main-navigation">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="C:\Users\IT\Desktop\webproject\WebProject\img\bigekramy.jpg" alt="Elevate Fitness Logo">
+                    <span>Big Ekramy</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="quick-test-btn">Quick Test</button>
+                <button class="dark-mode-toggle">Dark Mode</button>
+                <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-    <button class="popup-button" onclick="togglePopup()">Quick Test</button>
-    <button class="darkmode-button" onclick="toggleDarkMode()">Dark Mode</button>
-
-    <container class="popup-container" id="popupContainer">
-        <!-- Popup content remains the same -->
-    </container>
-
-    <section class="cards services" id="services">
-        <!-- Cards content remains the same -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Ignite Your Transformation 🔥</h1>
+            <p class="hero-subtitle">Unlock your full potential with expert fitness 💪, nutrition 🍎, and supplement 💊 guidance.</p>
+            <div class="hero-buttons">
+                <a href="memberships.html" class="cta-primary">Become a Member</a>
+                <a href="#explore" class="cta-secondary">Explore More</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="https://static.accupass.com/eventintro/2108180336592483001340.jpg" alt="Powerful Gym Scene" class="hero-image">
+        </div>
     </section>
 
-    <!-- New Section for Animated Cards -->
-    <section class="animated-cards">
-        <a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\splits.html" class="animated-card">
-            <p>workout plans</p>
-        </a>
-        <a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\nutrition.html" class="animated-card">
-            <p>nutrition Tips</p>
-        <a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\supplements.html" class="animated-card">
-            <p>Supplements Guide</p>
-        </a>
-    </section>
+    <main>
+        <section id="explore" class="featured-services-section">
+            <h2 class="section-title">Our Core Services</h2>
+            <div class="services-grid">
+                <div class="service-card workout-plan">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Custom Workout Plans</h3>
+                    <p>Achieve your specific goals with personalized training regimens crafted by our expert coaches.</p>
+                    <a href="workout-plans.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card nutrition-coaching">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Nutrition & Dietetics</h3>
+                    <p>Fuel your body effectively with tailored nutritional plans and expert coaching.</p>
+                    <a href="nutrition.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card supplement-guide">
+                    <i class="fas fa-pills"></i>
+                    <h3>Supplement Advisory</h3>
+                    <p>Understand the benefits and usage of safe and effective supplements to enhance your fitness journey.</p>
+                    <a href="supplements.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card personal-training">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>One-on-One Training</h3>
+                    <p>Get dedicated support and personalized attention from our certified personal trainers.</p>
+                    <a href="personal-training.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
 
-    <div class="contact-us">
-        <h2 class="contact-title">Contact Us</h2>
-        <ul class="contact-list">
-            <li class="contact-item">
-                <span class="contact-icon">📞</span>
-                <strong>Phone:</strong> +1 (555) 123-4567 | +1 (555) 987-6543 | +1 (555) 246-8100
-            </li>
-            <li class="contact-item">
-                <span class="contact-icon">✉️</span>
-                <strong>Email:</strong> 
-                <a href="mailto:support@fitnesshub.com" class="contact-link">support@fitnesshub.com</a> | 
-                <a href="mailto:info@fitnesshub.com" class="contact-link">info@fitnesshub.com</a>
-            </li>
-            <li class="contact-item">
-                <span class="contact-icon">📸</span>
-                <strong>Instagram:</strong> 
-                <a href="https://www.instagram.com/FitnessHubOfficial" target="_blank" class="contact-link">@FitnessHubOfficial</a>
-            </li>
-        </ul>
-        <p class="contact-message">
-            Feel free to reach out to us anytime! We're here to help you on your fitness journey.
-        </p>
-    </div>
+        <section class="call-to-action-section">
+            <div class="cta-content">
+                <h2>Ready to Elevate Your Fitness?</h2>
+                <p>Join our community and experience a transformative fitness journey with expert support and guidance.</p>
+                <a href="memberships.html" class="cta-primary large">Join Us Today</a>
+            </div>
+            <div class="cta-image-container">
+                <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?cs=srgb&dl=action-athlete-barbell-841130.jpg&fm=jpg" alt="Group Fitness Class" class="cta-image">
+            </div>
+        </section>
 
-   
+        <section class="contact-section">
+            <h2 class="section-title">Connect With Us 📞✉️📸📍</h2>
+            <p class="contact-intro">Have questions? Our team is here to help you on your fitness path.</p>
+            <div class="contact-details-card">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    <p><a href="tel:+15559876543">+1 (555) 987-6543</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:support@elevatefitness.com">support@elevatefitness.com</a></p>
+                    <p><a href="mailto:info@elevatefitness.com">info@elevatefitness.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <p><a href="https://www.instagram.com/ElevateFitnessOfficial" target="_blank">@ElevateFitnessOfficial</a></p>
+                </div>
+                <div class="contact-item location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Fitness Avenue, Cityville, USA</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="/WebProject/img/logo-footer.png" alt="Elevate Fitness Footer Logo">
+                    <span>Elevate Fitness</span>
+                </a>
+            </div>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="memberships.html">Memberships</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Elevate Fitness. All rights reserved.</p>
+    </footer>
+
+    <div class="popup-container" id="popupContainer">
+        </div>
+
+    <script src="/WebProject/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/your_fontawesome_kit.js" crossorigin="anonymous"></script>
 </body>
-
-<script src="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\js\index.js"></script>
 </html>
