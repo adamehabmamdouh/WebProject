@@ -14,3 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
     }
 });
+const supplementCards = document.querySelectorAll('.supplement-card');
+
+supplementCards.forEach(card => {
+    
+    card.addEventListener('click', () => {
+        card.classList.toggle('is-flipped');
+    });
+
+  
+});

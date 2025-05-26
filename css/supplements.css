@@ -1,136 +1,388 @@
-
 /* General Styles */
+:root {
+    /* Default Colors (Light Mode) */
+    --current-bg: #f7f7f7;
+    --current-text: #333;
+    --current-card-bg: #fff;
+    --current-header-bg: #fff;
+    --current-border: #eee;
+    --current-accent-blue: #007bff;
+    --current-accent-blue-hover: #0056b3;
+    --current-accent-blue-light: #e9ecef; /* Light blue background for hero */
+    --current-category-tag-bg: #e0e0e0;
+    --current-category-tag-text: #555;
+    --current-footer-bg: #333;
+    --current-footer-text: #fff;
+    --current-footer-link: #ddd;
+    --current-footer-copyright: #aaa;
+}
+
+body.dark-mode {
+    /* Dark Mode Overrides (user-friendly) */
+    --current-bg: #1a1a1a;
+    --current-text: #eee;
+    --current-card-bg: #2a2a2a; /* Slightly lighter than body for contrast */
+    --current-header-bg: #222;
+    --current-border: #444;
+    --current-accent-blue: #66b3ff; /* Lighter blue for dark mode */
+    --current-accent-blue-hover: #99ccff;
+    --current-accent-blue-light: #3b3b3b; /* Darker subtle background for hero */
+    --current-category-tag-bg: #3b3b3b;
+    --current-category-tag-text: #ccc;
+    --current-footer-bg: #111;
+    --current-footer-text: #eee;
+    --current-footer-link: #ccc;
+    --current-footer-copyright: #888;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: sans-serif; /* Fallback to a common sans-serif font */
+    margin: 0;
+    padding: 0;
+    background-color: var(--current-bg);
+    color: var(--current-text);
     line-height: 1.6;
-    background-color: #F8F9FA;
-    color: #333333;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #1A1A1A;
-    color: #A8A8A8;
-}
-
-body.dark-mode * {
-    color: #A8A8A8 !important;
-}
-
-header {
-    text-align: center;
-    padding: 30px 0;
-    background-color: rgba(255, 69, 0, 0.9); /* Orange Red */
-    color: white;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    transition: background-color 0.3s ease;
-}
-
-header:hover {
-    background-color: rgba(30, 144, 255, 0.9); /* Dodger Blue on hover */
-}
-
-h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-h2 {
-    color: #FF4500; /* Orange Red */
-    border-bottom: 2px solid #1E90FF; /* Dodger Blue */
-    padding-bottom: 5px;
-    margin-top: 30px;
-}
-
-.supplement {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.supplement:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2); /* Orange Red shadow */
-}
-
-.supplement-name {
-    color: #1E90FF; /* Dodger Blue */
-    font-size: 1.5em;
-    margin-top: 0;
+a {
+    text-decoration: none;
+    color: inherit;
     transition: color 0.3s ease;
 }
 
-.supplement:hover .supplement-name {
-    color: #FF4500; /* Orange Red on hover */
-}
-
-.category {
-    display: inline-block;
-    background-color: #FF4500; /* Orange Red */
-    color: white;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    margin-bottom: 10px;
+/* Header (Hero Section) */
+.hero {
+    background-color: var(--current-accent-blue-light);
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
     transition: background-color 0.3s ease;
 }
 
-.supplement:hover .category {
-    background-color: #1E90FF; /* Dodger Blue on hover */
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
-.usage, .restrictions {
-    margin-top: 15px;
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--current-text);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    transition: color 0.3s ease;
 }
 
-.restrictions {
-    color: #e74c3c;
-    font-weight: bold;
+.hero p {
+    font-size: 1.2rem;
+    color: var(--current-text);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    transition: color 0.3s ease;
 }
 
-/* Dark mode adjustments */
-body.dark-mode .supplement {
-    background-color: #2C2C2C;
-}
-
-body.dark-mode .supplement-name {
-    color: #FFD700; /* Gold in dark mode */
-}
-
-/* Button styles to match your theme */
+/* Dark Mode Button Positioning */
 .darkmode-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #FFFFFF;
-    background-color: #FF4500;
+    background-color: var(--current-accent-blue);
+    color: var(--current-card-bg); /* Text color should contrast with button background */
+    padding: 0.8rem 1.8rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+
+    /* Positioning styles */
+    position: fixed; /* Stays in place when scrolling */
+    bottom: 20px;    /* 20px from the bottom */
+    right: 20px;     /* 20px from the right */
+    z-index: 1000;   /* Ensures it stays on top of other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for visibility */
 }
 
 .darkmode-button:hover {
-    background-color: #1E90FF;
-    transform: scale(1.1);
+    background-color: var(--current-accent-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
 }
 
-/* Footer */
-footer {
+/* Main Content Wrapper */
+.content-wrapper {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Introduction Section */
+.intro-section {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    background-color: rgba(255, 69, 0, 0.9);
-    border-radius: 8px;
-    color: white;
+    margin-bottom: 3rem;
+}
+
+.intro-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--current-text);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--current-text);
+    opacity: 0.8;
+    max-width: 700px;
+    margin: 0 auto;
+    transition: color 0.3s ease;
+}
+
+/* Supplement Grid */
+.supplement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Card Flip Styles --- */
+
+/* Outer container for the card, sets perspective for 3D effect */
+.supplement-card {
+    position: relative;
+    width: 100%; /* Take full width of grid column */
+    min-height: 220px; /* Ensures consistent card height */
+    perspective: 1000px; /* Provides the 3D perspective */
+    /* Remove previous background, border, shadow from here */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0; /* Remove internal padding */
+    display: block; /* Override flex if it was there */
+    cursor: pointer; /* Indicate interactivity */
+}
+
+/* The actual element that rotates */
+.supplement-card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s; /* Smooth flip animation */
+    transform-style: preserve-3d; /* Children participate in 3D space */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Shadow on the inner card */
+    border: 1px solid var(--current-border); /* Border on the inner card */
+    background-color: var(--current-card-bg); /* Background color for the inner card */
+}
+
+/* Dark mode specific shadow for inner card */
+body.dark-mode .supplement-card-inner {
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Front and back faces of the card */
+.supplement-card-front,
+.supplement-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides the back of the element when facing away */
+    -webkit-backface-visibility: hidden; /* For Safari compatibility */
+    border-radius: 10px;
+    padding: 1.8rem; /* Padding inside the front/back content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Ensure text is centered by default */
+    background-color: var(--current-card-bg); /* Explicit background for front/back for clarity */
+    color: var(--current-text); /* Ensure text color */
+}
+
+.supplement-card-front {
+    transform: rotateY(0deg); /* Stays at 0 degrees for the front */
+    z-index: 2; /* Ensures front is on top initially */
+}
+
+.supplement-card-back {
+    transform: rotateY(180deg); /* Starts rotated 180 degrees for the back */
+    z-index: 1; /* Keeps back behind front initially */
+}
+
+/* Content specific styles for front/back */
+.supplement-card-front .category {
+    margin-bottom: 0.8rem;
+    background-color: var(--current-category-tag-bg);
+    color: var(--current-category-tag-text);
+}
+
+.supplement-card-front .supplement-name {
+    margin: 0; /* Remove default h3 margins for tighter fit */
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: var(--current-accent-blue); /* Apply accent color to name */
+}
+
+.supplement-card-back .details {
+    text-align: left; /* Align text within details to left */
+    width: 100%; /* Ensure it takes full width of padding */
+    box-sizing: border-box; /* Include padding in width calculation */
+    overflow-y: auto; /* Enable scroll if content overflows */
+    margin: 0; /* Remove default margins */
+}
+
+.supplement-card-back .details p {
+    margin-bottom: 0.8em; /* Spacing between paragraphs */
+    line-height: 1.5;
+    color: var(--current-text); /* Ensure paragraph text color */
+}
+
+.supplement-card-back .details p:last-child {
+    margin-bottom: 0; /* No bottom margin on the last paragraph */
+}
+
+.supplement-card-back .details strong {
+    color: var(--current-text); /* Ensure strong text color */
+}
+
+/* FLIP LOGIC: Apply rotation to inner card */
+.supplement-card:hover .supplement-card-inner, /* Flip on hover */
+.supplement-card.is-flipped .supplement-card-inner { /* Flip on click (JS adds this class) */
+    transform: rotateY(180deg);
+}
+
+/* Ensure outer card doesn't have its own transform on hover */
+.supplement-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--current-footer-bg);
+    color: var(--current-footer-text);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--current-footer-copyright);
+    transition: color 0.3s ease;
+}
+
+footer strong {
+    color: var(--current-footer-text);
+    transition: color 0.3s ease;
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .darkmode-button {
+        bottom: 15px; /* Adjust for smaller screens */
+        right: 15px;
+        padding: 0.7rem 1.4rem; /* Slightly smaller button */
+    }
+
+    .content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    .intro-section h2 {
+        font-size: 2rem;
+    }
+
+    .supplement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Card adjustments for smaller screens */
+    .supplement-card {
+        min-height: 200px; /* Adjust min-height if content is shorter */
+    }
+    .supplement-card-front,
+    .supplement-card-back {
+        padding: 1.2rem;
+    }
+    .supplement-card-front .supplement-name {
+        font-size: 1.4rem;
+    }
+    .supplement-card-back .details p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .darkmode-button {
+        bottom: 10px; /* Further adjust for very small screens */
+        right: 10px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .content-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .intro-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-description {
+        font-size: 0.9rem;
+    }
+
+    /* Card adjustments for very small screens */
+    .supplement-card {
+        min-height: 180px; /* Adjust min-height */
+    }
+    .supplement-card-front,
+    .supplement-card-back {
+        padding: 1rem;
+    }
+    .supplement-card-front .supplement-name {
+        font-size: 1.2rem;
+    }
+    .supplement-card-back .details p {
+        font-size: 0.85rem;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.8rem;
+    }
 }
