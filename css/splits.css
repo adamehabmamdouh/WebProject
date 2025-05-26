@@ -1,158 +1,352 @@
-
-
-.split-container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+/* General Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F8F9FA; /* Light gray background */
+    color: #333333; /* Dark gray text */
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.split-card {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a; /* Dark background */
+    color: #E0E0E0; /* Light gray text for contrast */
 }
 
-.split-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2);
-}
-
-.split-title {
-    color: #FF4500;
-    font-size: 28px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #1E90FF;
-    padding-bottom: 8px;
-}
-
-.day-title {
-    color: #1E90FF;
-    font-size: 22px;
-    margin: 20px 0 10px;
-}
-
-.exercise-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.exercise-item {
-    background-color: #F8F9FA;
-    padding: 12px 15px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.exercise-item:hover {
-    background-color: #e9ecef;
-}
-
-.exercise-name {
-    font-weight: bold;
-    color: #333333;
-}
-
-.exercise-sets {
-    color: #FF4500;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-/* Dark mode adjustments */
-body.dark-mode .split-card {
-    background-color: #2C2C2C;
-}
-
-body.dark-mode .exercise-item {
-    background-color: #1A1A1A;
-}
-
-body.dark-mode .exercise-name {
-    color: #A8A8A8;
-}
-/* Navigation Bar */
+/* Navigation Bar - Updated Styles for new shape */
 nav {
-    position: fixed;
+    background-color: #fff; /* White background for the nav */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    padding: 1rem 2rem; /* Padding for the nav container */
+    position: sticky;
     top: 0;
-    width: 100%;
-    background-color: rgba(255, 69, 0, 0.9); /* Orange Red with transparency */
-    padding: 15px 0;
-    z-index: 1000;
+    z-index: 100;
     transition: background-color 0.3s ease;
 }
 
-nav:hover {
-    background-color: rgba(30, 144, 255, 0.9); /* Dodger Blue on hover */
+body.dark-mode nav {
+    background-color: #222; /* Darker background in dark mode */
 }
 
 nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    margin: 0;
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the links */
+    align-items: center;
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 1.5rem; /* Spacing between links */
 }
 
 nav ul li a {
-    color: #FFFFFF; /* White text for links */
+    color: #555; /* Darker text color for links */
     text-decoration: none;
-    font-size: 20px;
+    font-weight: 500; /* Medium font weight */
+    font-size: 1.1em;
+    padding: 0.5rem 0; /* Padding for link clickable area */
+    position: relative; /* Needed for the underline effect */
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #FFD700; /* Gold on hover */
+body.dark-mode nav ul li a {
+    color: #ddd; /* Lighter text in dark mode */
 }
-.banner-container {
+
+/* Underline effect for hover and active */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Position below the text */
+    left: 0;
     width: 100%;
-    height: 600px; /* Container height remains unchanged */
-    position: relative;
-    overflow: hidden;
-    margin-top: 60px; /* Accounts for fixed nav bar */
-    margin-bottom: 20px;
+    height: 2px;
+    background-color: #007bff; /* Blue underline */
+    transform: scaleX(0); /* Hidden by default */
+    transition: transform 0.3s ease-in-out;
 }
+
+nav ul li a:hover::after,
+nav ul li a.active::after { /* Add 'active' class to current page link if desired */
+    transform: scaleX(1); /* Show underline on hover/active */
+}
+
+/* Banner Section */
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Fixed height for the banner */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .banner-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintains aspect ratio while filling container */
-    object-position: center 30%; /* Shows more of the top portion (adjust 30% as needed) */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    filter: brightness(60%); /* Darken image slightly */
+    transition: filter 0.3s ease;
+}
+
+body.dark-mode .banner-image {
+    filter: brightness(40%); /* Even darker image in dark mode */
 }
 
 .banner-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Ensure text is above image */
 }
 
 .banner-title {
-    font-size: 2.2rem;
-    margin-bottom: 8px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 3em;
+    margin-bottom: 10px;
 }
-
 
 .banner-subtitle {
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 1.2em;
 }
 
-/* Dark Mode Adjustments */
-body.dark-mode .banner-overlay {
-    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay in dark mode */
+/* Weekly Calendar Container */
+.weekly-calendar-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF; /* White background for the calendar container */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center the main title and description */
+}
+
+body.dark-mode .weekly-calendar-container {
+    background-color: #2C2C2C; /* Dark background for dark mode */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+}
+
+.weekly-calendar-container h2 {
+    color: #1E90FF; /* Dodger Blue */
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .weekly-calendar-container h2 {
+    color: #ADD8E6; /* Lighter blue in dark mode */
+}
+
+.calendar-description {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #555555;
+}
+
+body.dark-mode .calendar-description {
+    color: #B0B0B0;
+}
+
+/* Weekly Calendar Grid */
+.weekly-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between day cards */
+    padding: 20px;
+}
+
+/* Day Card Styles */
+.day-card {
+    background-color: #F8F9FA; /* Light gray for cards */
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    text-align: left; /* Align content within cards */
+    display: flex;
+    flex-direction: column;
+}
+
+.day-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .day-card {
+    background-color: #3A3A3A; /* Darker background for dark mode cards */
+    border-color: #555555;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .day-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.day-name {
+    font-size: 1.8em;
+    color: #1E90FF; /* Dodger Blue for day names */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1E90FF;
+    padding-bottom: 10px;
+}
+
+body.dark-mode .day-name {
+    color: #ADD8E6; /* Lighter blue in dark mode */
+    border-bottom-color: #ADD8E6;
+}
+
+.split-info {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #CCCCCC;
+}
+
+.day-card .split-info:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none; /* No border for the last split info in a card */
+    flex-grow: 1; /* Allow last split info to take available space */
+}
+
+body.dark-mode .split-info {
+    border-bottom-color: #777777;
+}
+
+.split-type {
+    font-size: 1.3em;
+    color: #333333; /* Dark gray for split type */
+    margin-bottom: 10px;
+}
+
+body.dark-mode .split-type {
+    color: #F8F9FA; /* Lightest gray in dark mode */
+}
+
+.training-session {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #007bff; /* A slightly different blue for training sessions */
+    margin-bottom: 10px;
+}
+
+body.dark-mode .training-session {
+    color: #87CEEB; /* Sky blue for training sessions in dark mode */
+}
+
+.exercise-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.95em;
+    color: #555555;
+}
+
+body.dark-mode .exercise-list {
+    color: #C0C0C0;
+}
+
+.exercise-list li {
+    margin-bottom: 5px;
+}
+
+.notes {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #777777;
+    margin-top: 10px;
+}
+
+body.dark-mode .notes {
+    color: #A0A0A0;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    background-color: #E9ECEF; /* Light gray for footer */
+    color: #555555;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode footer {
+    background-color: #003366; /* Darker blue for dark mode footer */
+    color: #E0E0E0;
+}
+
+/* Dark Mode Toggle Button */
+.darkmode-button {
+    position: fixed;
+    bottom: 20px; /* Position at the bottom */
+    right: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: #FFFFFF; /* White text */
+    background-color: #1E90FF; /* Dodger Blue background */
+    border: none;
+    border-radius: 50px; /* Make it more pill-shaped */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.darkmode-button:hover {
+    background-color: #007bff; /* Slightly darker blue on hover */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .weekly-calendar-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+
+    .banner-title {
+        font-size: 2.2em;
+    }
+
+    .banner-subtitle {
+        font-size: 1em;
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Reduce spacing on smaller screens */
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    .day-card {
+        padding: 20px;
+    }
+
+    .day-name {
+        font-size: 1.6em;
+    }
+
+    .split-type {
+        font-size: 1.2em;
+    }
+
+    .training-session {
+        font-size: 1em;
+    }
+
+    .darkmode-button {
+        padding: 10px 20px;
+        font-size: 14px;
+        bottom: 15px;
+        right: 15px;
+    }
 }
