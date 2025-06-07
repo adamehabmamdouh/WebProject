@@ -46,7 +46,8 @@ app.use((req, res, next) => {
     res.locals.lang = lang; // Make lang available in EJS templates
     next();
 });
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 // Session middleware (MUST be before any routes that use sessions)
 app.use(
     session({
@@ -62,7 +63,7 @@ app.use(
 
 // --- EJS Templating Engine Setup ---
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views","layouts"));
 
 // --- Setup Routes ---
 // Call setupRoutes after all middleware is configured
@@ -77,16 +78,16 @@ const options = {
     cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem'))
 };
 
-// Start the HTTPS server
+/* Start the HTTPS server
 https.createServer(options, app).listen(port, () => {
     console.log(`HTTPS Server is running at https://localhost:${port}/`);
-});
+});*/
 
 // --- Alternative: Simple HTTP Server (for easier development) ---
-/*
+
 app.listen(port, () => {
     console.log(`HTTP Server is running at http://localhost:${port}/`);
 });
-*/
 
-// Removed: module.exports = app; // Not typically needed for the main app.js that starts the server
+
+// Removed: module.exports = app; // Not typically needed for the main app.js that starts the server     

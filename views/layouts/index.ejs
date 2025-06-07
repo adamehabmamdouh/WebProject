@@ -11,20 +11,20 @@
     <header class="main-header">
         <nav class="main-navigation">
             <div class="logo">
-                <a href="/"> <%-- Changed to root path for home --%>
+                <a href="/">
                     <img src="/img/bigekramy.jpg" alt="Elevate Fitness Logo">
                     <span>Big Ekramy</span>
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="/" class="active">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/memberships">Memberships</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/" class="active"><%= __('home_link') %></a></li>
+                <li><a href="/about"><%= __('about_us_link') %></a></li>
+                <li><a href="/memberships"><%= __('memberships_link') %></a></li>
+                <li><a href="/login"><%= __('login_link') %></a></li>
             </ul>
             <div class="nav-actions">
-                <button class="quick-test-btn">Quick Test</button>
-                <button class="dark-mode-toggle">Dark Mode</button>
+                <button class="quick-test-btn"><%= __('quick_test_button') %></button>
+                <button class="dark-mode-toggle"><%= __('dark_mode_button') %></button>
                 <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -34,16 +34,15 @@
 
     <section class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Ignite Your Transformation 🔥</h1>
-            <% /* Example of dynamic content based on a logged-in user */ %>
-            <% if (typeof loggedInUser !== 'undefined' && loggedInUser && loggedInUser.name) { %>
-                <p class="hero-subtitle">Welcome back, <%= loggedInUser.name %>! Unlock your full potential with expert fitness 💪, nutrition 🍎, and supplement 💊 guidance.</p>
+            <h1 class="hero-title"><%= __('hero_title') %></h1>
+            <% if (typeof user !== 'undefined' && user && user.name) { %>
+                <p class="hero-subtitle"><%= __('welcome_back_user', { name: user.name }) %></p>
             <% } else { %>
-                <p class="hero-subtitle">Unlock your full potential with expert fitness 💪, nutrition 🍎, and supplement 💊 guidance.</p>
+                <p class="hero-subtitle"><%= __('hero_subtitle_guest') %></p>
             <% } %>
             <div class="hero-buttons">
-                <a href="/memberships" class="cta-primary">Become a Member</a>
-                <a href="#explore" class="cta-secondary">Explore More</a>
+                <a href="/memberships" class="cta-primary"><%= __('become_member_button') %></a>
+                <a href="#explore" class="cta-secondary"><%= __('explore_more_button') %></a>
             </div>
         </div>
         <div class="hero-image-container">
@@ -53,40 +52,40 @@
 
     <main>
         <section id="explore" class="featured-services-section">
-            <h2 class="section-title">Our Core Services</h2>
+            <h2 class="section-title"><%= __('our_core_services_title') %></h2>
             <div class="services-grid">
                 <div class="service-card workout-plan">
                     <i class="fas fa-clipboard-list"></i>
-                    <h3>Custom Workout Plans</h3>
-                    <p>Achieve your specific goals with personalized training regimens crafted by our expert coaches.</p>
-                    <a href="/workout-plans" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3><%= __('custom_workout_plans_heading') %></h3>
+                    <p><%= __('custom_workout_plans_desc') %></p>
+                    <a href="/workout-plans" class="learn-more"><%= __('learn_more_button') %> <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card nutrition-coaching">
                     <i class="fas fa-apple-alt"></i>
-                    <h3>Nutrition & Dietetics</h3>
-                    <p>Fuel your body effectively with tailored nutritional plans and expert coaching.</p>
-                    <a href="/nutrition" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3><%= __('nutrition_dietetics_heading') %></h3>
+                    <p><%= __('nutrition_dietetics_desc') %></p>
+                    <a href="/nutrition" class="learn-more"><%= __('learn_more_button') %> <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card supplement-guide">
                     <i class="fas fa-pills"></i>
-                    <h3>Supplement Advisory</h3>
-                    <p>Understand the benefits and usage of safe and effective supplements to enhance your fitness journey.</p>
-                    <a href="/supplements" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3><%= __('supplement_advisory_heading') %></h3>
+                    <p><%= __('supplement_advisory_desc') %></p>
+                    <a href="/supplements" class="learn-more"><%= __('learn_more_button') %> <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card personal-training">
                     <i class="fas fa-user-tie"></i>
-                    <h3>One-on-One Training</h3>
-                    <p>Get dedicated support and personalized attention from our certified personal trainers.</p>
-                    <a href="/personal-training" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    <h3><%= __('one_on_one_training_heading') %></h3>
+                    <p><%= __('one_on_one_training_desc') %></p>
+                    <a href="/personal-training" class="learn-more"><%= __('learn_more_button') %> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <section class="call-to-action-section">
             <div class="cta-content">
-                <h2>Ready to Elevate Your Fitness?</h2>
-                <p>Join our community and experience a transformative fitness journey with expert support and guidance.</p>
-                <a href="/memberships" class="cta-primary large">Join Us Today</a>
+                <h2><%= __('cta_heading') %></h2>
+                <p><%= __('cta_description') %></p>
+                <a href="/memberships" class="cta-primary large"><%= __('join_us_today_button') %></a>
             </div>
             <div class="cta-image-container">
                 <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?cs=srgb&dl=action-athlete-barbell-841130.jpg&fm=jpg" alt="Group Fitness Class" class="cta-image">
@@ -94,38 +93,39 @@
         </section>
 
         <section class="users-section">
-            <h2 class="section-title">Recent Users (from MongoDB - For Development Testing)</h2>
+            <h2 class="section-title"><%= __('recent_users_heading') %></h2>
             <% if (users && users.length > 0) { %>
                 <ul>
                     <% users.forEach(function(user) { %>
                         <li>
-                            <strong>Name:</strong> <%= user.name %><br>
-                            <strong>Email:</strong> <%= user.email %><br>
-                            <small>Joined: <%= user.createdAt.toLocaleDateString() %></small>
+                            <strong><%= __('name_label') %></strong> <%= user.name %><br>
+                            <strong><%= __('email_label') %></strong> <%= user.email %><br>
+                            <small><%= __('joined_date_label') %>: <%= user.createdAt.toLocaleDateString() %></small>
                         </li>
                     <% }); %>
                 </ul>
             <% } else { %>
-                <p>No users found in the database. Add one using the form below!</p>
+                <p><%= __('no_users_found') %></p>
             <% } %>
 
-            <h3>Add a New User (for testing MongoDB write operation):</h3>
-            <form action="/users" method="POST" class="add-user-form">
-                <label for="userName">Name:</label>
+            <h3><%= __('add_user_heading') %></h3>
+            <form action="/user" method="POST" class="add-user-form">
+                <label for="userName"><%= __('name_label') %></label>
                 <input type="text" id="userName" name="name" required><br>
 
-                <label for="userEmail">Email:</label>
+                <label for="userEmail"><%= __('email_label') %></label>
                 <input type="email" id="userEmail" name="email" required><br>
 
-                <label for="userPassword">Password:</label>
+                <label for="userPassword"><%= __('password_label') %></label>
                 <input type="password" id="userPassword" name="password" required><br>
 
-                <button type="submit">Submit New User</button>
+                <button type="submit"><%= __('submit_button') %></button>
             </form>
         </section>
+
         <section class="contact-section">
-            <h2 class="section-title">Connect With Us 📞✉️📸📍</h2>
-            <p class="contact-intro">Have questions? Our team is here to help you on your fitness path.</p>
+            <h2 class="section-title"><%= __('connect_with_us_title') %></h2>
+            <p class="contact-intro"><%= __('contact_intro_text') %></p>
             <div class="contact-details-card">
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="contact-item location">
                     <i class="fas fa-map-marker-alt"></i>
-                    <p>123 Fitness Avenue, Cityville, USA</p>
+                    <p><%= __('address_text') %></p>
                 </div>
             </div>
         </section>
@@ -158,10 +158,10 @@
                 </a>
             </div>
             <ul class="footer-links">
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/memberships">Memberships</a></li>
-                <li><a href="/privacy-policy">Privacy Policy</a></li>
-                <li><a href="/terms-of-service">Terms of Service</a></li>
+                <li><a href="/about"><%= __('about_us_link_footer') %></a></li>
+                <li><a href="/memberships"><%= __('memberships_link_footer') %></a></li>
+                <li><a href="/privacy-policy"><%= __('privacy_policy_link') %></a></li>
+                <li><a href="/terms-of-service"><%= __('terms_of_service_link') %></a></li>
             </ul>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -169,13 +169,12 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-        <p class="copyright">&copy; 2025 Elevate Fitness. All rights reserved.</p>
+        <p class="copyright">&copy; 2025 <%= __('copyright_text') %></p>
     </footer>
 
     <div class="popup-container" id="popupContainer">
     </div>
 
-    <script src="/public/js/index.js"></script>
-    <%-- Note: Font Awesome Kit should ideally be loaded once, perhaps in a common header partial --%>
+    <script src="/js/index.js"></script>
 </body>
 </html>

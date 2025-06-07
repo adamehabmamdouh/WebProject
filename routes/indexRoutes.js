@@ -10,7 +10,7 @@ const User = require('../models/User'); // Path adjusted assuming this is inside
 router.get('/', async (req, res) => {
     try {
         const users = await User.find({}); // Fetch all users from the 'users' collection
-        res.render('index', {
+        res.render('index.ejs', {
             title: 'Elevate Fitness - Home',
             users: users,
             // req.session.user should be available here if session middleware is set up correctly in app.js
