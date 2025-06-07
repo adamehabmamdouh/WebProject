@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/public/css/index.css">
+    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-navigation">
+            <div class="logo">
+                <a href="/"> <%-- Changed to root path for home --%>
+                    <img src="/img/bigekramy.jpg" alt="Elevate Fitness Logo">
+                    <span>Big Ekramy</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/memberships">Memberships</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="quick-test-btn">Quick Test</button>
+                <button class="dark-mode-toggle">Dark Mode</button>
+                <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Ignite Your Transformation 🔥</h1>
+            <% /* Example of dynamic content based on a logged-in user */ %>
+            <% if (typeof loggedInUser !== 'undefined' && loggedInUser && loggedInUser.name) { %>
+                <p class="hero-subtitle">Welcome back, <%= loggedInUser.name %>! Unlock your full potential with expert fitness 💪, nutrition 🍎, and supplement 💊 guidance.</p>
+            <% } else { %>
+                <p class="hero-subtitle">Unlock your full potential with expert fitness 💪, nutrition 🍎, and supplement 💊 guidance.</p>
+            <% } %>
+            <div class="hero-buttons">
+                <a href="/memberships" class="cta-primary">Become a Member</a>
+                <a href="#explore" class="cta-secondary">Explore More</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="https://static.accupass.com/eventintro/2108180336592483001340.jpg" alt="Powerful Gym Scene" class="hero-image">
+        </div>
+    </section>
+
+    <main>
+        <section id="explore" class="featured-services-section">
+            <h2 class="section-title">Our Core Services</h2>
+            <div class="services-grid">
+                <div class="service-card workout-plan">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Custom Workout Plans</h3>
+                    <p>Achieve your specific goals with personalized training regimens crafted by our expert coaches.</p>
+                    <a href="/workout-plans" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card nutrition-coaching">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Nutrition & Dietetics</h3>
+                    <p>Fuel your body effectively with tailored nutritional plans and expert coaching.</p>
+                    <a href="/nutrition" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card supplement-guide">
+                    <i class="fas fa-pills"></i>
+                    <h3>Supplement Advisory</h3>
+                    <p>Understand the benefits and usage of safe and effective supplements to enhance your fitness journey.</p>
+                    <a href="/supplements" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card personal-training">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>One-on-One Training</h3>
+                    <p>Get dedicated support and personalized attention from our certified personal trainers.</p>
+                    <a href="/personal-training" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="call-to-action-section">
+            <div class="cta-content">
+                <h2>Ready to Elevate Your Fitness?</h2>
+                <p>Join our community and experience a transformative fitness journey with expert support and guidance.</p>
+                <a href="/memberships" class="cta-primary large">Join Us Today</a>
+            </div>
+            <div class="cta-image-container">
+                <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?cs=srgb&dl=action-athlete-barbell-841130.jpg&fm=jpg" alt="Group Fitness Class" class="cta-image">
+            </div>
+        </section>
+
+        <section class="users-section">
+            <h2 class="section-title">Recent Users (from MongoDB - For Development Testing)</h2>
+            <% if (users && users.length > 0) { %>
+                <ul>
+                    <% users.forEach(function(user) { %>
+                        <li>
+                            <strong>Name:</strong> <%= user.name %><br>
+                            <strong>Email:</strong> <%= user.email %><br>
+                            <small>Joined: <%= user.createdAt.toLocaleDateString() %></small>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No users found in the database. Add one using the form below!</p>
+            <% } %>
+
+            <h3>Add a New User (for testing MongoDB write operation):</h3>
+            <form action="/users" method="POST" class="add-user-form">
+                <label for="userName">Name:</label>
+                <input type="text" id="userName" name="name" required><br>
+
+                <label for="userEmail">Email:</label>
+                <input type="email" id="userEmail" name="email" required><br>
+
+                <label for="userPassword">Password:</label>
+                <input type="password" id="userPassword" name="password" required><br>
+
+                <button type="submit">Submit New User</button>
+            </form>
+        </section>
+        <section class="contact-section">
+            <h2 class="section-title">Connect With Us 📞✉️📸📍</h2>
+            <p class="contact-intro">Have questions? Our team is here to help you on your fitness path.</p>
+            <div class="contact-details-card">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    <p><a href="tel:+15559876543">+1 (555) 987-6543</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:support@elevatefitness.com">support@elevatefitness.com</a></p>
+                    <p><a href="mailto:info@elevatefitness.com">info@elevatefitness.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <p><a href="https://www.instagram.com/ElevateFitnessOfficial" target="_blank">@ElevateFitnessOfficial</a></p>
+                </div>
+                <div class="contact-item location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Fitness Avenue, Cityville, USA</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="/">
+                    <img src="/img/logo-footer.png" alt="Elevate Fitness Footer Logo">
+                    <span>Elevate Fitness</span>
+                </a>
+            </div>
+            <ul class="footer-links">
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/memberships">Memberships</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms-of-service">Terms of Service</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Elevate Fitness. All rights reserved.</p>
+    </footer>
+
+    <div class="popup-container" id="popupContainer">
+    </div>
+
+    <script src="/public/js/index.js"></script>
+    <%-- Note: Font Awesome Kit should ideally be loaded once, perhaps in a common header partial --%>
+</body>
+</html>
