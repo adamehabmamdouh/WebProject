@@ -72,5 +72,9 @@
 	"dont_have_account": "Don't have an account?",
 	"forgot_password_link": "Forgot Password?",
 	"login": "login",
-	"login_button": "login_button"
+	"login_button": "login_button",
+	"enter_full_name_placeholder": "enter_full_name_placeholder",
+	"enter_username_placeholder": "enter_username_placeholder",
+	"enter_email_placeholder": "enter_email_placeholder",
+	"confirm_password_placeholder": "confirm_password_placeholder"
 }
