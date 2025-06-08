@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
     <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <nav class="main-navigation">
             <div class="logo">
                 <a href="/">
-                    <img src="/img/bigekramy.jpg" alt="Elevate Fitness Logo">
+                    <img src="image/bigekramy.jpg" alt="Elevate Fitness Logo">
                     <span>Big Ekramy</span>
                 </a>
             </div>
@@ -92,36 +92,6 @@
             </div>
         </section>
 
-        <section class="users-section">
-            <h2 class="section-title"><%= __('recent_users_heading') %></h2>
-            <% if (users && users.length > 0) { %>
-                <ul>
-                    <% users.forEach(function(user) { %>
-                        <li>
-                            <strong><%= __('name_label') %></strong> <%= user.name %><br>
-                            <strong><%= __('email_label') %></strong> <%= user.email %><br>
-                            <small><%= __('joined_date_label') %>: <%= user.createdAt.toLocaleDateString() %></small>
-                        </li>
-                    <% }); %>
-                </ul>
-            <% } else { %>
-                <p><%= __('no_users_found') %></p>
-            <% } %>
-
-            <h3><%= __('add_user_heading') %></h3>
-            <form action="/user" method="POST" class="add-user-form">
-                <label for="userName"><%= __('name_label') %></label>
-                <input type="text" id="userName" name="name" required><br>
-
-                <label for="userEmail"><%= __('email_label') %></label>
-                <input type="email" id="userEmail" name="email" required><br>
-
-                <label for="userPassword"><%= __('password_label') %></label>
-                <input type="password" id="userPassword" name="password" required><br>
-
-                <button type="submit"><%= __('submit_button') %></button>
-            </form>
-        </section>
 
         <section class="contact-section">
             <h2 class="section-title"><%= __('connect_with_us_title') %></h2>
@@ -152,10 +122,7 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <a href="/">
-                    <img src="/img/logo-footer.png" alt="Elevate Fitness Footer Logo">
-                    <span>Elevate Fitness</span>
-                </a>
+               
             </div>
             <ul class="footer-links">
                 <li><a href="/about"><%= __('about_us_link_footer') %></a></li>
