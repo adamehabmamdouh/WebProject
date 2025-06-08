@@ -6,7 +6,7 @@ const ejs = require("ejs");
 
 function setupRoutes(app) {
   app.use('/', indexRoutes);
-  app.use('/auth', authRoutes);
+  app.use('/', authRoutes);
   app.use('/user', userRoutes);
   app.use((req, res, next) => {
     res.render("404", {

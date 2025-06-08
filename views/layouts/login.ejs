@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>"> <% // Use lang variable from res.locals for i18n %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - FitnessHub</title> <% // Use title variable from route, add site name %>
+
+    <!-- Static CSS files -->
+    <link rel="stylesheet" href="/css/login.css"> <% // Correct relative path for static files %>
+    <link rel="stylesheet" href="/css/style.css"> <% // Add your main style.css if you have one %>
+</head>
+<body>
+    <button class="darkmode-button" onclick="toggleDarkMode()"><%= __('dark_mode_button') %></button>
+
+    <div class="login-container">
+        <h2 class="login-title"><%= __('login_heading') %></h2> <% // i18n for heading %>
+
+        <% if (error) { %> <% // Display server-side error message if passed from route %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+
+        <% if (successMessage) { %> <% // Display success message if passed (e.g., after signup) %>
+            <p class="success-message"><%= successMessage %></p>
+        <% } %>
+
+        <form action="/login" method="POST"> <% // Set form action to POST to /login route %>
+            <div class="input-group">
+                <label for="username_email"><%= __('username_email_label') %></label> <% // i18n for label %>
+                <input type="text" id="username_email" name="username" placeholder="<%= __('enter_username_email_placeholder') %>" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password"><%= __('password_label') %></label> <% // i18n for label %>
+                <input type="password" id="password" name="password" placeholder="<%= __('enter_password_placeholder') %>" required>
+            </div>
+
+            <button type="submit" class="login-button"><%= __('login_button') %></button> <% // i18n for button %>
+        </form>
+
+        <p class="signup-link">
+            <%= __('dont_have_account') %> <a href="/signup"><%= __('signup_link') %></a> <% // i18n for link text and correct EJS path %>
+        </p>
+
+        <p class="forgot-password-link">
+            <a href="/forgot-password"><%= __('forgot_password_link') %></a> <% // Add a link for forgot password %>
+        </p>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/login.js"></script>
+</body>
+</html>
