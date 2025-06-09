@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Memberships | Fitness Hub</title>
-    <link rel="stylesheet" href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\css\Memberships.css">
-    
+    <link rel="stylesheet" href="C:\Web Project\WebProject\public\css\Memberships.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\index.html">Home</a></li>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\ABOUT.html">About</a></li>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\Memberships.html">Memberships</a></li>
-            <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\login.html">login</a></li>
-        </ul>
-    </nav>
+    <header class="main-header">
+        <nav class="main-navigation">
+            <div class="logo">
+                <a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\index.html">
+                    <img src="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\images\logo.png" alt="Fitness Hub Logo">
+                    Fitness Hub
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\index.html">Home</a></li>
+                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\ABOUT.html">About</a></li>
+                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\Memberships.html" class="active">Memberships</a></li>
+                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\login.html">Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button onclick="window.location.href='C:\\Users\\ostaz\\OneDrive\\Desktop\\Web\\WebProject\\html\\login.html'">Sign Up</button>
+                <button onclick="window.location.href='C:\\Users\\ostaz\\OneDrive\\Desktop\\Web\\WebProject\\html\\login.html'">Login</button>
+            </div>
+            <button class="mobile-nav-toggle">☰</button>
+        </nav>
+    </header>
 
-    <!-- Banner Section -->
     <div class="banner-container">
         <img src="https://png.pngtree.com/background/20230516/original/pngtree-gym-with-many-weights-in-dark-lighting-picture-image_2611113.jpg" alt="Gym Membership Banner" class="banner-image">
         <div class="banner-overlay">
@@ -41,7 +52,7 @@
                 <li>Free Wi-Fi</li>
                 <li>Basic fitness assessment</li>
             </ul>
-            <a href="#" class="membership-button">Join Now</a>
+            <a href="#" class="membership-button" data-plan-name="Basic Membership" data-plan-price="$29.99">Join Now</a>
         </div>
         
         <div class="membership-card" style="border: 2px solid #FFD700;">
@@ -55,7 +66,7 @@
                 <li>1 free personal training session</li>
                 <li>Sauna & steam room access</li>
             </ul>
-            <a href="#" class="membership-button">Join Now</a>
+            <a href="#" class="membership-button" data-plan-name="Premium Membership" data-plan-price="$49.99">Join Now</a>
         </div>
         
         <div class="membership-card">
@@ -70,50 +81,50 @@
                 <li>Complimentary towel service</li>
                 <li>Guest passes (2/month)</li>
             </ul>
-            <a href="#" class="membership-button">Join Now</a>
+            <a href="#" class="membership-button" data-plan-name="Elite Membership" data-plan-price="$79.99">Join Now</a>
         </div>
-        <!-- Payment Modal -->
-<div id="paymentModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2>Complete Your Membership</h2>
-      <p class="selected-plan">You're signing up for: <span id="planName">Basic Membership</span></p>
-      <p class="selected-price">Price: <span id="planPrice">$29.99</span></p>
-      
-      <form id="paymentForm">
-        <div class="form-group">
-          <label for="cardName">Name on Card</label>
-          <input type="text" id="cardName" placeholder="John Smith" required>
+
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Complete Your Membership</h2>
+                <p class="selected-plan">You're signing up for: <span id="planName">Basic Membership</span></p>
+                <p class="selected-price">Price: <span id="planPrice">$29.99</span></p>
+                
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" id="cardName" placeholder="John Smith" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <div class="card-input-container">
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email for Receipt</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <button type="submit" class="payment-button">Complete Payment</button>
+                </form>
+            </div>
         </div>
-        
-        <div class="form-group">
-          <label for="cardNumber">Card Number</label>
-          <div class="card-input-container">
-            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="expiryDate">Expiry Date</label>
-            <input type="text" id="expiryDate" placeholder="MM/YY" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" placeholder="123" required>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email for Receipt</label>
-          <input type="email" id="email" placeholder="your@email.com" required>
-        </div>
-        
-        <button type="submit" class="payment-button">Complete Payment</button>
-      </form>
-    </div>
-  </div>
     </section>
 
     <div class="membership-benefits">
@@ -145,7 +156,6 @@
             <div class="faq-question">What's included in the membership fee?</div>
             <div class="faq-answer">All memberships include access to our facilities during operating hours, locker rooms, and basic amenities. Higher tiers include additional benefits as listed.</div>
         </div>
-        
         
         <div class="faq-item">
             <div class="faq-question">Can I freeze my membership?</div>
@@ -185,8 +195,6 @@
         </p>
     </div>
 
-
-    
-</body>
-<script src="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\JS\Memberships.js"></script>
+    </body>
+<script src="C:\Web Project\WebProject\public\js\Memberships.js"></script>
 </html>

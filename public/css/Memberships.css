@@ -1,400 +1,379 @@
+/* Base Styles (from your original index.css) */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif; /* Changed to Open Sans for consistency */
+    background-color: #F8F9FA;
+    color: #333333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6; /* Added from general styles */
+}
 
-        /* Base Styles (from your original index.css) */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #F8F9FA;
-            color: #333333;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+body.dark-mode {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+}
 
-        body.dark-mode {
-            background-color: #1A1A1A;
-            color: #FFFFFF;
-        }
+body.dark-mode * {
+    color: #A8A8A8 !important; /* This rule might be too broad; consider refining it if it affects unintended elements */
+}
 
-        body.dark-mode * {
-            color: #A8A8A8 !important;
-        }
+/* Links (from index.css general styles) */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 69, 0, 0.9);
-            padding: 15px 0;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
-        }
-
-        nav:hover {
-            background-color: rgba(30, 144, 255, 0.9);
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #FFD700;
-        }
-
-        /* Content */
-        .content {
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .content h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #FF4500;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .content p {
-            font-size: 20px;
-            line-height: 1.6;
-            animation: fadeIn 3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Banner Styles */
-        .banner-container {
-            width: 100%;
-            height: 600px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 60px;
-            margin-bottom: 20px;
-        }
-
-        .banner-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-
-        .banner-title {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .banner-subtitle {
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        body.dark-mode .banner-overlay {
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        /* Membership Page Specific Styles */
-        .membership-plans {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 50px 20px;
-            margin-bottom: 100px;
-        }
-
-        .membership-card {
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            padding: 30px;
-            width: 25%;
-            margin: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .membership-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(255, 69, 0, 0.3);
-        }
-
-        .membership-card h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #FF4500;
-        }
-
-        .membership-price {
-            font-size: 36px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #1E90FF;
-        }
-
-        .membership-price span {
-            font-size: 16px;
-        }
-
-        .membership-features {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            text-align: left;
-        }
-
-        .membership-features li {
-            padding: 8px 0;
-            font-size: 16px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .membership-features li:last-child {
-            border-bottom: none;
-        }
-
-        .membership-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            font-size: 18px;
-            color: #FFFFFF;
-            background-color: #FF4500;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .membership-button:hover {
-            background-color: #1E90FF;
-            transform: scale(1.05);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: #FFD700;
-            color: #333;
-            padding: 5px 15px;
-            font-weight: bold;
-            transform: rotate(45deg) translate(30%, -50%);
-            transform-origin: center;
-            width: 120px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        /* Membership Benefits Section */
-        .membership-benefits {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .membership-benefits h2 {
-            text-align: center;
-            color: #FF4500;
-            margin-bottom: 20px;
-        }
-
-        .benefits-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .benefit-item {
-            width: 48%;
-            margin-bottom: 20px;
-        }
-
-        .benefit-item h3 {
-            color: #1E90FF;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* FAQ Section */
-        .membership-faq {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .membership-faq h2 {
-            text-align: center;
-            color: #FF4500;
-            margin-bottom: 20px;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-        }
-
-        .faq-question {
-            font-weight: bold;
-            color: #FF4500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .faq-answer {
-            display: none;
-            padding: 10px 0 10px 26px;
-        }
-
-        /* Contact Section */
-        .contact-us {
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 50px auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-title {
-            text-align: center;
-            font-size: 28px;
-            color: #FF4500;
-            margin-bottom: 20px;
-        }
-
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .contact-item {
-            font-size: 18px;
-            margin: 15px 0;
-            color: #333333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-link {
-            color: #FF4500;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: #1E90FF;
-            text-decoration: underline;
-        }
-
-        /* Dark Mode Adjustments */
-        body.dark-mode .membership-card,
-        body.dark-mode .membership-benefits,
-        body.dark-mode .membership-faq,
-        body.dark-mode .contact-us {
-            background-color: #2C2C2C;
-        }
-
-        body.dark-mode .membership-features li {
-            border-bottom: 1px solid #444;
-        }
-
-        body.dark-mode .popular-badge {
-            color: #1A1A1A;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-            .membership-card {
-                width: 45%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .membership-card {
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            .benefit-item {
-                width: 100%;
-            }
-        }
-
-        /* Buttons */
-        .popup-button, .darkmode-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #FFFFFF;
-            background-color: #FF4500;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            z-index: 1000;
-        }
-
-        .darkmode-button {
-            right: 120px;
-        }
-
-        .popup-button:hover, .darkmode-button:hover {
-            background-color: #1E90FF;
-            transform: scale(1.1);
-        }
-    
+.dark-mode a {
+    color: #ccc;
+}
 
 
-        /* FAQ Section Improvements */
+/* Header and Navigation (from index.css) */
+.main-header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky; /* Changed from fixed to sticky for better flow, adjust if fixed is truly needed */
+    top: 0;
+    z-index: 1000; /* Increased z-index to match your original nav */
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .main-header {
+    background-color: #222;
+}
+
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.dark-mode .logo a {
+    color: #66b3ff;
+}
+
+.logo img {
+    height: 50px;
+    width: 50px;
+    margin-right: 0.7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links li a {
+    color: #555;
+    padding: 0.5rem 0;
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-links li a.active::after,
+.nav-links li a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-links li a.active::after,
+.nav-links li a:hover::after {
+    transform: scaleX(1);
+}
+
+.dark-mode .nav-links li a {
+    color: #ddd;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-actions button {
+    background: none;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 0.7rem 1.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-actions button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.dark-mode .nav-actions button {
+    border-color: #66b3ff;
+    color: #66b3ff;
+}
+
+.dark-mode .nav-actions button:hover {
+    background-color: #66b3ff;
+    color: #222;
+}
+
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.dark-mode .mobile-nav-toggle {
+    color: #66b3ff;
+}
+
+
+/* Content */
+.content {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #007bff;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.content p {
+    font-size: 20px;
+    line-height: 1.6;
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Banner Styles */
+.banner-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px; /* Adjusted to account for sticky header */
+    margin-bottom: 20px;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .banner-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Membership Page Specific Styles */
+.membership-plans {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+    margin-bottom: 100px;
+}
+
+.membership-card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 30px;
+    width: 25%;
+    margin: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.membership-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(255, 69, 0, 0.3);
+}
+
+.membership-card h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.membership-price {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #1E90FF;
+}
+
+.membership-price span {
+    font-size: 16px;
+}
+
+.membership-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.membership-features li {
+    padding: 8px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.membership-features li:last-child {
+    border-bottom: none;
+}
+
+.membership-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    color: #FFFFFF;
+    background-color:#007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.membership-button:hover {
+    background-color: #1E90FF;
+    transform: scale(1.05);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #FFD700;
+    color: #333;
+    padding: 5px 15px;
+    font-weight: bold;
+    transform: rotate(45deg) translate(30%, -50%);
+    transform-origin: center;
+    width: 120px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Membership Benefits Section */
+.membership-benefits {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.membership-benefits h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.benefits-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.benefit-item {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.benefit-item h3 {
+    color: #1E90FF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* FAQ Section */
+.membership-faq {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.membership-faq h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
 .faq-item {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
@@ -403,7 +382,7 @@
 
 .faq-question {
     font-weight: bold;
-    color: #FF4500;
+    color: #007bff;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -438,9 +417,156 @@ body.dark-mode .faq-answer {
     animation: fadeIn 0.3s ease forwards;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Contact Section */
+.contact-us {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+    text-align: center;
+    font-size: 28px;
+    color:#007bff;
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-link {
+    color:#007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #1E90FF;
+    text-decoration: underline;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .membership-card,
+body.dark-mode .membership-benefits,
+body.dark-mode .membership-faq,
+body.dark-mode .contact-us {
+    background-color: #2C2C2C;
+}
+
+body.dark-mode .membership-features li {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .popular-badge {
+    color: #1A1A1A;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .membership-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-navigation {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 80px; /* Adjusted for larger logo/header height */
+        left: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+    }
+
+    .dark-mode .nav-links {
+        background-color: #2a2a2a;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .dark-mode .nav-links li {
+        border-bottom: 1px solid #444;
+    }
+
+    .nav-links li a {
+        display: block;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .nav-actions button {
+        margin-left: 0.5rem;
+    }
+
+    .membership-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .benefit-item {
+        width: 100%;
+    }
+}
+
+/* Buttons */
+.popup-button, .darkmode-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #FF4500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.darkmode-button {
+    right: 120px;
+}
+
+.popup-button:hover, .darkmode-button:hover {
+    background-color: #1E90FF;
+    transform: scale(1.1);
 }
 
 /* Payment Modal Styles */
@@ -454,9 +580,9 @@ body.dark-mode .faq-answer {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.7);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: #fff;
     margin: 5% auto;
     padding: 30px;
@@ -466,14 +592,14 @@ body.dark-mode .faq-answer {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     position: relative;
     animation: modalFadeIn 0.3s;
-  }
-  
-  @keyframes modalFadeIn {
+}
+
+@keyframes modalFadeIn {
     from {opacity: 0; transform: translateY(-50px);}
     to {opacity: 1; transform: translateY(0);}
-  }
-  
-  .close-modal {
+}
+
+.close-modal {
     position: absolute;
     right: 25px;
     top: 15px;
@@ -482,80 +608,80 @@ body.dark-mode .faq-answer {
     font-weight: bold;
     cursor: pointer;
     transition: color 0.2s;
-  }
-  
-  .close-modal:hover {
+}
+
+.close-modal:hover {
     color: #FF4500;
-  }
-  
-  .selected-plan, .selected-price {
+}
+
+.selected-plan, .selected-price {
     font-size: 18px;
     margin-bottom: 20px;
     color: #555;
-  }
-  
-  .selected-plan span, .selected-price span {
+}
+
+.selected-plan span, .selected-price span {
     font-weight: bold;
     color: #FF4500;
-  }
-  
-  #paymentForm {
+}
+
+#paymentForm {
     margin-top: 20px;
-  }
-  
-  .form-group {
+}
+
+.form-group {
     margin-bottom: 20px;
-  }
-  
-  .form-group label {
+}
+
+.form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #333;
-  }
-  
-  .form-group input {
+}
+
+.form-group input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
     transition: border 0.3s;
-  }
-  
-  .form-group input:focus {
+}
+
+.form-group input:focus {
     border-color: #FF4500;
     outline: none;
-  }
-  
-  .form-row {
+}
+
+.form-row {
     display: flex;
     gap: 20px;
-  }
-  
-  .form-row .form-group {
+}
+
+.form-row .form-group {
     flex: 1;
-  }
-  
-  .card-input-container {
+}
+
+.card-input-container {
     position: relative;
-  }
-  
-  .card-icons {
+}
+
+.card-icons {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     gap: 5px;
-  }
-  
-  .card-icons img {
+}
+
+.card-icons img {
     height: 20px;
     width: auto;
-  }
-  
-  .payment-button {
+}
+
+.payment-button {
     width: 100%;
     padding: 15px;
     background-color: #FF4500;
@@ -566,34 +692,34 @@ body.dark-mode .faq-answer {
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 10px;
-  }
-  
-  .payment-button:hover {
+}
+
+.payment-button:hover {
     background-color: #1E90FF;
-  }
-  
-  /* Dark Mode Styles for Modal */
-  body.dark-mode .modal-content {
+}
+
+/* Dark Mode Styles for Modal */
+body.dark-mode .modal-content {
     background-color: #2C2C2C;
     color: #fff;
-  }
-  
-  body.dark-mode .form-group label,
-  body.dark-mode .selected-plan,
-  body.dark-mode .selected-price {
+}
+
+body.dark-mode .form-group label,
+body.dark-mode .selected-plan,
+body.dark-mode .selected-price {
     color: #ddd;
-  }
-  
-  body.dark-mode .form-group input {
+}
+
+body.dark-mode .form-group input {
     background-color: #3A3A3A;
     border-color: #555;
     color: #fff;
-  }
-  
-  body.dark-mode .close-modal {
+}
+
+body.dark-mode .close-modal {
     color: #888;
-  }
-  
-  body.dark-mode .close-modal:hover {
+}
+
+body.dark-mode .close-modal:hover {
     color: #FFA500;
-  }
+}
