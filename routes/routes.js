@@ -9,9 +9,10 @@ function setupRoutes(app) {
   app.use('/', authRoutes);
   app.use('/user', userRoutes);
   app.use((req, res, next) => {
-    res.render("404", {
-      currentPage: "404",
-      user: req.session.user === undefined ? "" : req.session.user,
+   res.render("404", {
+  currentPage: "404",
+  title: "Page Not Found", // ← ADD THIS LINE
+  user: req.session.user === undefined ? "" : req.session.user,
     });
   });
   

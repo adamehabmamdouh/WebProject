@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="<%= typeof lang !== 'undefined' ? lang : 'en' %>"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'Workout Splits' %></title>
+     <link rel="stylesheet" href="/css/splits.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/" data-i18n="nav_home"></a></li>          <li><a href="/about" data-i18n="nav_about"></a></li>    <li><a href="/memberships" data-i18n="nav_memberships"></a></li> <li><a href="/login" data-i18n="nav_login"></a></li>    </ul>
+       
+    </nav>
+
+    <div class="banner-container">
+       <img src="/image/workoutbanner.avif" alt="Workout Banner" class="banner-image">
+        <div class="banner-overlay">
+            <h1 class="banner-title" data-i18n="banner_title"></h1>          <p class="banner-subtitle" data-i18n="banner_subtitle"></p>      </div>
+    </div>
+
+    <div class="weekly-calendar-container">
+        <h2 data-i18n="calendar_title"></h2>                                   <p class="calendar-description" data-i18n="calendar_description"></p> <div class="weekly-calendar-grid">
+            <% const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; %>
+            <% days.forEach((day, i) => { %>
+                <div class="day-card">
+                    <h3 class="day-name"></h3> <div class="split-info">
+                        <h4 class="split-type" data-i18n="split_ppl_type"></h4> <p class="training-session"></p> <ul class="exercise-list">
+                            </ul>
+                        <p class="notes"></p> </div>
+
+                    <div class="split-info">
+                        <h4 class="split-type" data-i18n="split_arnold_type"></h4> <p class="training-session"></p> <ul class="exercise-list">
+                            </ul>
+                        <p class="notes"></p> </div>
+                </div>
+            <% }); %>
+
+        </div>
+    </div>
+    <footer>
+        <p data-i18n="footer_disclaimer"></p> </footer>
+<button class="darkmode-button" data-i18n="darkmode_button"></button>
+    <script src="/js/splits.js"></script>
+</body>
+</html>

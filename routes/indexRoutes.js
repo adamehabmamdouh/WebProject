@@ -29,5 +29,11 @@ router.get('/about', (req, res) => {
         user: req.session.user === undefined ? "" : req.session.user,
     });
 });
-
+router.get('/splits', (req, res) => {
+    res.render('splits', { // This will look for 'splits.ejs' in your views/layouts directory
+        title: res.__('splits_page_title'), // Use i18n for the page title
+        lang: req.locale, // Passes the current language for the <html> tag
+        loggedInUser: req.session.user || null // Passes user session data
+    });
+});
 module.exports = router;

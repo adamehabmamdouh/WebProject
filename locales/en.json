@@ -76,5 +76,138 @@
 	"enter_full_name_placeholder": "enter_full_name_placeholder",
 	"enter_username_placeholder": "enter_username_placeholder",
 	"enter_email_placeholder": "enter_email_placeholder",
-	"confirm_password_placeholder": "confirm_password_placeholder"
+	"confirm_password_placeholder": "confirm_password_placeholder",
+	
+ "nav_home": "Home",
+    "nav_about": "About",
+    "nav_memberships": "Memberships",
+    "nav_login": "Login",
+    "nav_logout": "Logout",          "nav_login_prompt": "Please log in", "nav_register_prompt": "register",   "nav_or": "or",                  "welcome__message": "Welcome, {name}!", "banner_title": "Gym Workout Splits",
+    "banner_subtitle": "Optimize your training with these proven routines",
+
+    "calendar_title": "Your Weekly Training Sessions",
+    "calendar_description": "Discover what each day holds for your Push/Pull/Legs and Arnold splits.",
+
+    "day_monday": "Monday",
+    "day_tuesday": "Tuesday",
+    "day_wednesday": "Wednesday",
+    "day_thursday": "Thursday",
+    "day_friday": "Friday",
+    "day_saturday": "Saturday",
+    "day_sunday": "Sunday",
+
+    "split_ppl_type": "Push/Pull/Legs Split:",
+    "split_arnold_type": "Arnold Split:",
+
+    "ppl_monday_session": "Push Day (Chest, Shoulders, Triceps)",
+    "ppl_monday_exercises": [
+        "Flat Barbell Bench Press: 4 sets × 6-8 reps",
+        "Incline Dumbbell Press: 3 sets × 8-10 reps",
+        "Overhead Shoulder Press: 4 sets × 6-8 reps",
+        "Lateral Raises: 3 sets × 12-15 reps",
+        "Triceps Dips: 3 sets × 10-12 reps"
+    ],
+
+    "arnold_monday_session": "Chest & Back",
+    "arnold_monday_exercises": [
+        "Bench Press: 5 sets × 6-10 reps",
+        "Incline Dumbbell Press: 5 sets × 6-10 reps",
+        "Pull-Ups: 5 sets × max reps",
+        "Bent Over Rows: 5 sets × 6-10 reps"
+    ],
+
+    "ppl_tuesday_session": "Pull Day (Back, Biceps)",
+    "ppl_tuesday_exercises": [
+        "Deadlifts: 4 sets × 5 reps",
+        "Pull-Ups: 4 sets × 8-10 reps",
+        "Bent Over Rows: 3 sets × 8-10 reps",
+        "Face Pulls: 3 sets × 12-15 reps",
+        "Barbell Curls: 3 sets × 10-12 reps"
+    ],
+
+    "arnold_tuesday_session": "Shoulders & Arms",
+    "arnold_tuesday_exercises": [
+        "Military Press: 5 sets × 6-10 reps",
+        "Lateral Raises: 5 sets × 10-15 reps",
+        "Barbell Curls: 5 sets × 6-10 reps",
+        "Close-Grip Bench Press: 5 sets × 6-10 reps"
+    ],
+
+    "ppl_wednesday_session": "Legs Day",
+    "ppl_wednesday_exercises": [
+        "Squats: 4 sets × 6-8 reps",
+        "Romanian Deadlifts: 3 sets × 8-10 reps",
+        "Leg Press: 3 sets × 10-12 reps",
+        "Leg Curls: 3 sets × 12-15 reps",
+        "Calf Raises: 4 sets × 15-20 reps"
+    ],
+
+    "arnold_wednesday_session": "Legs & Lower Back",
+    "arnold_wednesday_exercises": [
+        "Squats: 5 sets × 6-10 reps",
+        "Leg Curls: 5 sets × 10-15 reps",
+        "Calf Raises: 5 sets × 15-20 reps",
+        "Deadlifts: 5 sets × 6-10 reps"
+    ],
+
+    "ppl_thursday_session": "Push Day (Chest, Shoulders, Triceps)",
+    "ppl_thursday_exercises": [
+        "Flat Barbell Bench Press: 4 sets × 6-8 reps",
+        "Incline Dumbbell Press: 3 sets × 8-10 reps",
+        "Overhead Shoulder Press: 4 sets × 6-8 reps",
+        "Lateral Raises: 3 sets × 12-15 reps",
+        "Triceps Dips: 3 sets × 10-12 reps"
+    ],
+
+    "arnold_thursday_session": "Chest & Back",
+    "arnold_thursday_exercises": [
+        "Bench Press: 5 sets × 6-10 reps",
+        "Incline Dumbbell Press: 5 sets × 6-10 reps",
+        "Pull-Ups: 5 sets × max reps",
+        "Bent Over Rows: 5 sets × 6-10 reps"
+    ],
+
+    "ppl_friday_session": "Pull Day (Back, Biceps)",
+    "ppl_friday_exercises": [
+        "Deadlifts: 4 sets × 5 reps",
+        "Pull-Ups: 4 sets × 8-10 reps",
+        "Bent Over Rows: 3 sets × 8-10 reps",
+        "Face Pulls: 3 sets × 12-15 reps",
+        "Barbell Curls: 3 sets × 10-12 reps"
+    ],
+
+    "arnold_friday_session": "Shoulders & Arms",
+    "arnold_friday_exercises": [
+        "Military Press: 5 sets × 6-10 reps",
+        "Lateral Raises: 5 sets × 10-15 reps",
+        "Barbell Curls: 5 sets × 6-10 reps",
+        "Close-Grip Bench Press: 5 sets × 6-10 reps"
+    ],
+
+    "ppl_saturday_session": "Legs Day",
+    "ppl_saturday_exercises": [
+        "Squats: 4 sets × 6-8 reps",
+        "Romanian Deadlifts: 3 sets × 8-10 reps",
+        "Leg Press: 3 sets × 10-12 reps",
+        "Leg Curls: 3 sets × 12-15 reps",
+        "Calf Raises: 4 sets × 15-20 reps"
+    ],
+
+    "arnold_saturday_session": "Legs & Lower Back",
+    "arnold_saturday_exercises": [
+        "Squats: 5 sets × 6-10 reps",
+        "Leg Curls: 5 sets × 10-15 reps",
+        "Calf Raises: 5 sets × 15-20 reps",
+        "Deadlifts: 5 sets × 6-10 reps"
+    ],
+
+    "ppl_sunday_session": "Rest Day",
+    "ppl_sunday_notes": "Focus on recovery, light activity, or active rest.",
+
+    "arnold_sunday_session": "Rest Day",
+    "arnold_sunday_notes": "Crucial for muscle repair and growth.",
+
+    "footer_disclaimer": "Disclaimer: Consult with a fitness professional before starting any new workout program.",
+    "darkmode_button": "Dark Mode",
+    "splits_page_title": "Gym Workout Splits"
 }
