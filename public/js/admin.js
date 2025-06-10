@@ -53,6 +53,46 @@ async function deleteUser(userId) {
     }
 }
 
+// Handle new user creation
+document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirmPassword');
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    try {
+        const response = await fetch('/admin/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: formData.get('username'),
+                email: formData.get('email'),
+                password: password
+            })
+        });
+
+        if (response.ok) {
+            alert('User created successfully!');
+            e.target.reset(); // Clear the form
+            location.reload(); // Refresh to show new user
+        } else {
+            const data = await response.json();
+            throw new Error(data.error || 'Failed to create user');
+        }
+    } catch (error) {
+        console.error('Error creating user:', error);
+        alert(error.message || 'Failed to create user. Please try again.');
+    }
+});
+
 // Show/hide user list
 document.getElementById('usersButton').addEventListener('click', function() {
     const userList = document.getElementById('userList');
@@ -93,6 +133,46 @@ async function deleteUser(userId) {
         alert('Failed to delete user. Please try again.');
     }
 }
+
+// Handle new user creation
+document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirmPassword');
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    try {
+        const response = await fetch('/admin/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: formData.get('username'),
+                email: formData.get('email'),
+                password: password
+            })
+        });
+
+        if (response.ok) {
+            alert('User created successfully!');
+            e.target.reset(); // Clear the form
+            location.reload(); // Refresh to show new user
+        } else {
+            const data = await response.json();
+            throw new Error(data.error || 'Failed to create user');
+        }
+    } catch (error) {
+        console.error('Error creating user:', error);
+        alert(error.message || 'Failed to create user. Please try again.');
+    }
+});
 
 // Show/hide user list
 document.getElementById('usersButton').addEventListener('click', function() {

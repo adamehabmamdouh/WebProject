@@ -3,7 +3,45 @@ const router = express.Router();
 const User = require('../models/User'); // Import the User model
 
 // ... existing code ...
+// ... existing code ...
 
+// Create new user route
+router.post('/admin/users', async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+
+        // Check if user already exists
+        const existingUser = await User.findOne({ 
+            $or: [{ username }, { email }] 
+        });
+
+        if (existingUser) {
+            return res.status(400).json({ 
+                error: existingUser.username === username ? 
+                    'Username already exists' : 
+                    'Email already exists' 
+            });
+        }
+
+        // Create new user
+        const newUser = new User({ username, email, password });
+        await newUser.save();
+
+        res.status(201).json({ 
+            message: 'User created successfully',
+            user: {
+                _id: newUser._id,
+                username: newUser.username,
+                email: newUser.email
+            }
+        });
+    } catch (err) {
+        console.error('Error creating user:', err);
+        res.status(500).json({ error: 'Failed to create user' });
+    }
+});
+
+// ... existing code ...
 // Delete user route
 router.delete('/admin/users/:id', async (req, res) => {
     try {
@@ -208,5 +246,40 @@ router.delete('/admin/users/:id', async (req, res) => {
     }
 });
 
+// Create new user route
+router.post('/admin/users', async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+
+        // Check if user already exists
+        const existingUser = await User.findOne({ 
+            $or: [{ username }, { email }] 
+        });
+
+        if (existingUser) {
+            return res.status(400).json({ 
+                error: existingUser.username === username ? 
+                    'Username already exists' : 
+                    'Email already exists' 
+            });
+        }
+
+        // Create new user
+        const newUser = new User({ username, email, password });
+        await newUser.save();
+
+        res.status(201).json({ 
+            message: 'User created successfully',
+            user: {
+                _id: newUser._id,
+                username: newUser.username,
+                email: newUser.email
+            }
+        });
+    } catch (err) {
+        console.error('Error creating user:', err);
+        res.status(500).json({ error: 'Failed to create user' });
+    }
+});
 
 module.exports = router;
