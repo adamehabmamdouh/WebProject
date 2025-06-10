@@ -21,21 +21,81 @@ function renderUsers() {
     });
 }
 
-function deleteUser(userId) {
-    const index = users.findIndex(user => user.id === userId);
-    if (index !== -1) {
-        users.splice(index, 1);
-        renderUsers(); 
+// Function to delete a user
+async function deleteUser(userId) {
+    if (!confirm('Are you sure you want to delete this user?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/admin/users/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Remove the user row from the table
+            const row = document.querySelector(`tr[data-user-id="${userId}"]`);
+            if (row) {
+                row.remove();
+            }
+            alert('User deleted successfully');
+            // Refresh the page to update the user list
+            location.reload();
+        } else {
+            throw new Error('Failed to delete user');
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('Failed to delete user. Please try again.');
     }
 }
 
-
+// Show/hide user list
 document.getElementById('usersButton').addEventListener('click', function() {
-    document.getElementById('userList').style.display = 'block';
-    renderUsers(); // Render users when the user list is shown
+    const userList = document.getElementById('userList');
+    userList.style.display = userList.style.display === 'none' ? 'block' : 'none';
 });
-
 
 function hideUserList() {
     document.getElementById('userList').style.display = 'none';
 }
+// Function to delete a user
+async function deleteUser(userId) {
+    if (!confirm('Are you sure you want to delete this user?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/admin/users/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Remove the user row from the table
+            const row = document.querySelector(`tr[data-user-id="${userId}"]`);
+            if (row) {
+                row.remove();
+            }
+            alert('User deleted successfully');
+            // Refresh the page to update the user list
+            location.reload();
+        } else {
+            throw new Error('Failed to delete user');
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('Failed to delete user. Please try again.');
+    }
+}
+
+// Show/hide user list
+document.getElementById('usersButton').addEventListener('click', function() {
+    const userList = document.getElementById('userList');
+    userList.style.display = userList.style.display === 'none' ? 'block' : 'none';
+});

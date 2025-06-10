@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="<%= C:\Users\laptop\Desktop\WebProject\public\css %>">
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="/admin">Dashboard</a></li>
             <li><a href="#" id="usersButton">Users</a></li>
-            <li><a href="#">Reports</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
     </nav>
 
@@ -19,33 +19,37 @@
         <h2>Welcome, Admin!</h2>
         <p>Here is where you can manage your website and view important information.</p>
 
-        <div id="userList" class="card" style="display: none;">
+        <div id="userList" class="card">
             <h3>Users</h3>
             <table id="userTable">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Username</th>
                         <th>Email</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="userTableBody">
-                    <% users.forEach(user => { %>
+                    <% if (users && users.length > 0) { %>
+                        <% users.forEach(user => { %>
+                            <tr>
+                                <td><%= user.username %></td>
+                                <td><%= user.email %></td>
+                                <td>
+                                    <button onclick="deleteUser('<%= user._id %>')" class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
                         <tr>
-                            <td><%= user.name %></td>
-                            <td><%= user.email %></td>
-                            <td><button onclick="deleteUser('<%= user.id %>')">Delete</button></td>
+                            <td colspan="3">No users found</td>
                         </tr>
-                    <% }) %>
+                    <% } %>
                 </tbody>
             </table>
-            <button onclick="hideUserList()">Close Users List</button>
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Admin Panel. All Rights Reserved.</p>
-    </footer>
-    <script src="<%= C:\Users\laptop\Desktop\WebProject\public\js %>"></script>
+    <script src="/js/admin.js"></script>
 </body>
 </html>

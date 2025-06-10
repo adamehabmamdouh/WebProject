@@ -2,6 +2,40 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User'); // Import the User model
 
+// ... existing code ...
+
+// Delete user route
+router.delete('/admin/users/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json({ message: 'User deleted successfully' });
+    } catch (err) {
+        console.error('Error deleting user:', err);
+        res.status(500).json({ error: 'Failed to delete user' });
+    }
+});
+
+// ... existing code ...
+
+// Admin route to display users
+router.get('/admin', async (req, res) => {
+    try {
+        // Fetch all users from MongoDB, excluding password field
+        const users = await User.find({}).select('-password');
+        res.render('admin', {
+            title: 'Admin Panel',
+            users: users
+        });
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        res.status(500).send('Error loading admin panel');
+    }
+});
+
+// ... existing code ...
 // --- GET /signup - Display the signup form ---
 router.get('/signup', (req, res) => {
     // Render the signup.ejs template
@@ -144,5 +178,35 @@ router.get('/logout', (req, res) => {
         res.redirect('/login'); // Redirect to login page after logout
     });
 });
+
+// Admin route to display users
+router.get('/admin', async (req, res) => {
+    try {
+        // Fetch all users from MongoDB, excluding password field
+        const users = await User.find({}).select('-password');
+        res.render('admin', {
+            title: 'Admin Panel',
+            users: users
+        });
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        res.status(500).send('Error loading admin panel');
+    }
+});
+
+// Delete user route
+router.delete('/admin/users/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json({ message: 'User deleted successfully' });
+    } catch (err) {
+        console.error('Error deleting user:', err);
+        res.status(500).json({ error: 'Failed to delete user' });
+    }
+});
+
 
 module.exports = router;
