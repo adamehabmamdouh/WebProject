@@ -4,6 +4,49 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... rest of your initialization code
 });
 
+// --- Dark Mode Toggle ---
+    const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
+    const popupContainer = document.getElementById('popupContainer'); // Get the popup container
+
+    // Your existing toggleDarkMode function
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+
+        // Update popup container background based on mode
+        if (popupContainer) { // Check if popupContainer exists before trying to style it
+            if (document.body.classList.contains('dark-mode')) {
+                popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                popupContainer.style.color = 'white';
+            } else {
+                popupContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                popupContainer.style.color = 'black';
+            }
+        }
+
+        // Save theme preference to localStorage
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // Add event listener to the dark mode toggle button
+    if (darkModeToggleBtn) {
+        darkModeToggleBtn.addEventListener('click', toggleDarkMode);
+    }
+
+    // Apply theme on load (check localStorage)
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        // Immediately apply dark mode styles to popup if it exists
+        if (popupContainer) {
+            popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            popupContainer.style.color = 'white';
+        }
+    }
+
+
 // Fixed FAQ Functionality
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');

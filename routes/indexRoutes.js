@@ -47,4 +47,25 @@ router.get('/nutrition', (req, res) => {
     });
 });
 
+router.get('/memberships', (req, res) => {
+    res.render('Memberships', { // Assuming 'Memberships.ejs' is in 'views/layouts/'
+        title: res.__('memberships_page_title'), // Use i18n for the page title
+        lang: req.locale, // Pass the current language for the <html> tag
+        loggedInUser: req.session.user || null // Pass user session data
+        // You can add more data here if the memberships page needs dynamic content
+    });
+});
+
+// routes/indexRoutes.js
+// ... (existing imports and routes) ...
+
+router.get('/supplements', (req, res) => {
+    res.render('Supplements', {
+        title: res.__('supplements_page_title'),
+        lang: req.locale || 'en',
+        loggedInUser: req.session.user || null
+    });
+});
+
+module.exports = router;
 module.exports = router;

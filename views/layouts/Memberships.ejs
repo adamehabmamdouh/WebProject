@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Memberships | Fitness Hub</title>
-    <link rel="stylesheet" href="C:\Web Project\WebProject\public\css\Memberships.css">
+    <link rel="stylesheet" href="/css/Memberships.css">
 </head>
 <body>
     <header class="main-header">
         <nav class="main-navigation">
             <div class="logo">
-                <a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\index.html">
-                    <img src="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\images\logo.png" alt="Fitness Hub Logo">
-                    Fitness Hub
+                <!-- Assuming your index.html is served at the root -->
+                <a href="/">
+                    <img src="/image/logo.png" alt="Fitness Hub Logo">
+                    Big Ekramy
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\index.html">Home</a></li>
-                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\ABOUT.html">About</a></li>
-                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\Memberships.html" class="active">Memberships</a></li>
-                <li><a href="C:\Users\ostaz\OneDrive\Desktop\Web\WebProject\html\login.html">Login</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li> <!-- Assuming a route for /about -->
+                <li><a href="/memberships" class="active">Memberships</a></li> <!-- Assuming a route for /memberships -->
+                <li><a href="/login">Login</a></li> <!-- Assuming a route for /login -->
             </ul>
             <div class="nav-actions">
-                <button onclick="window.location.href='C:\\Users\\ostaz\\OneDrive\\Desktop\\Web\\WebProject\\html\\login.html'">Sign Up</button>
-                <button onclick="window.location.href='C:\\Users\\ostaz\\OneDrive\\Desktop\\Web\\WebProject\\html\\login.html'">Login</button>
+                <button onclick="window.location.href='/signup'">Sign Up</button> <!-- Assuming a route for /signup -->
+                <button onclick="window.location.href='/login'">Login</button>
             </div>
             <button class="mobile-nav-toggle">☰</button>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle"><%= __('dark_mode_button') %></button>
+                <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -101,7 +108,7 @@
                         <label for="cardNumber">Card Number</label>
                         <div class="card-input-container">
                             <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-row">
@@ -191,10 +198,11 @@
             </li>
         </ul>
         <p style="font-size: 16px; color: #555555; margin-top: 20px; font-style: italic;">
-            Our team is available Monday-Friday 8AM-8PM and Saturday 9AM-4PM to answer your questions.
+            Our team is available Monday–Friday 8AM–8PM and Saturday 9AM–4PM to answer your questions.
         </p>
     </div>
 
-    </body>
-<script src="C:\Web Project\WebProject\public\js\Memberships.js"></script>
+</body>
+<!-- Assuming Memberships.js is in public/js -->
+<script src="/js/Memberships.js"></script>
 </html>
