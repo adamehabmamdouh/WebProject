@@ -8,7 +8,7 @@ const User = require('../models/User'); // Import the User model
 // Create new user route
 router.post('/admin/users', async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password, isAdmin } = req.body;
 
         // Check if user already exists
         const existingUser = await User.findOne({ 
@@ -23,8 +23,13 @@ router.post('/admin/users', async (req, res) => {
             });
         }
 
-        // Create new user
-        const newUser = new User({ username, email, password });
+        // Create new user with admin role if specified
+        const newUser = new User({ 
+            username, 
+            email, 
+            password,
+            isAdmin: isAdmin || false // Set admin role
+        });
         await newUser.save();
 
         res.status(201).json({ 
@@ -32,7 +37,8 @@ router.post('/admin/users', async (req, res) => {
             user: {
                 _id: newUser._id,
                 username: newUser.username,
-                email: newUser.email
+                email: newUser.email,
+                isAdmin: newUser.isAdmin
             }
         });
     } catch (err) {
@@ -249,7 +255,7 @@ router.delete('/admin/users/:id', async (req, res) => {
 // Create new user route
 router.post('/admin/users', async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password, isAdmin } = req.body;
 
         // Check if user already exists
         const existingUser = await User.findOne({ 
@@ -264,8 +270,13 @@ router.post('/admin/users', async (req, res) => {
             });
         }
 
-        // Create new user
-        const newUser = new User({ username, email, password });
+        // Create new user with admin role if specified
+        const newUser = new User({ 
+            username, 
+            email, 
+            password,
+            isAdmin: isAdmin || false // Set admin role
+        });
         await newUser.save();
 
         res.status(201).json({ 
@@ -273,7 +284,8 @@ router.post('/admin/users', async (req, res) => {
             user: {
                 _id: newUser._id,
                 username: newUser.username,
-                email: newUser.email
+                email: newUser.email,
+                isAdmin: newUser.isAdmin
             }
         });
     } catch (err) {

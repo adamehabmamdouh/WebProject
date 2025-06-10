@@ -58,6 +58,22 @@
     background-color: #c82333;
 }
 
+.checkbox-group {
+    margin: 1rem 0;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
 /* ... existing styles ... */
 body {
             font-family: 'Roboto', sans-serif;
