@@ -36,4 +36,15 @@ router.get('/splits', (req, res) => {
         loggedInUser: req.session.user || null // Passes user session data
     });
 });
+router.get('/nutrition', (req, res) => {
+    res.render('nutrition', {
+        title: res.__('nutrition_page_title'), // Get title from i18n
+        lang: req.locale, // Pass current locale
+        loggedInUser: req.session.user || null, // Pass user session data
+        // Pass translated placeholders for BMI calculator inputs
+        bmi_weight_placeholder: res.__('bmi_weight_placeholder'),
+        bmi_height_placeholder: res.__('bmi_height_placeholder')
+    });
+});
+
 module.exports = router;

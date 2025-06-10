@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="<%= typeof lang !== 'undefined' ? lang : 'en' %>">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= typeof title !== 'undefined' ? title : 'Nutrition Tips & BMI Calculator' %></title>
+    <link rel="stylesheet" href="/css/nutrition.css">
+</head>
+<body>
+  <header>
+    <h1><span data-i18n="nutrition_header_title">Nutrition Tips & BMI Calculator</span></h1>
+    <p><span data-i18n="nutrition_header_subtitle">Boost your health with smart nutrition and learn your ideal weight range</span></p>
+  </header>
+
+  <div class="content">
+    <h2><span data-i18n="nutrition_tips_heading">Top Nutrition Tips</span></h2>
+    <div class="tips">
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Colorful vegetables">
+        <h3><span data-i18n="tip1_title">1. Eat More Vegetables</span></h3>
+        <p><span data-i18n="tip1_description">Fill half your plate with colorful veggies to pack in fiber, vitamins, and minerals.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Water bottle">
+        <h3><span data-i18n="tip2_title">2. Stay Hydrated</span></h3>
+        <p><span data-i18n="tip2_description">Drink at least 2-3 liters of water daily to keep your energy and digestion on point.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Protein foods">
+        <h3><span data-i18n="tip3_title">3. Prioritize Protein</span></h3>
+        <p><span data-i18n="tip3_description">Support your muscles by adding lean meats, eggs, dairy, or legumes to every meal.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Whole grains">
+        <h3><span data-i18n="tip4_title">4. Choose Whole Grains</span></h3>
+        <p><span data-i18n="tip4_description">Swap white rice and bread for brown rice, oats, and whole grain pasta for better fiber.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Balanced meal">
+        <h3><span data-i18n="tip5_title">5. Balance Is Key</span></h3>
+        <p><span data-i18n="tip5_description">Include carbs, proteins, and healthy fats in your meals. Don’t fear any group.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Avoid sugar">
+        <h3><span data-i18n="tip6_title">6. Avoid Processed Sugars</span></h3>
+        <p><span data-i18n="tip6_description">Minimize sweets and sugary drinks. Choose fruits or dark chocolate instead.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://www.mashed.com/img/gallery/heres-the-nutritional-difference-between-olive-oil-and-avocado-oil/intro-1617623110.jpg" alt="Healthy fats">
+        <h3><span data-i18n="tip7_title">7. Eat Healthy Fats</span></h3>
+        <p><span data-i18n="tip7_description">Incorporate avocados, nuts, and olive oil to support brain and heart health.</span></p>
+      </div>
+
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Portion control">
+        <h3><span data-i18n="tip9_title">9. Practice Portion Control</span></h3>
+        <p><span data-i18n="tip9_description">Even healthy food can lead to weight gain if portions are too large. Be mindful.</span></p>
+      </div>
+      <div class="tip-card">
+        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Meal prep">
+        <h3><span data-i18n="tip10_title">10. Plan Your Meals</span></h3>
+        <p><span data-i18n="tip10_description">Prepping meals in advance helps you stay on track and avoid unhealthy choices.</span></p>
+      </div>
+    </div>
+
+    <div class="bmi-section">
+      <h2><span data-i18n="bmi_calculator_heading">BMI Calculator</span></h2>
+      <p><span data-i18n="bmi_calculator_description">Enter your weight and height to calculate your Body Mass Index (BMI).</span></p>
+      <input type="number" id="weight" placeholder="<%= typeof bmi_weight_placeholder !== 'undefined' ? bmi_weight_placeholder : 'Weight in kg' %>">
+      <input type="number" id="height" placeholder="<%= typeof bmi_height_placeholder !== 'undefined' ? bmi_height_placeholder : 'Height in cm' %>">
+      <br>
+      <button onclick="calculateBMI()"><span data-i18n="bmi_calculate_button">Calculate BMI</span></button>
+      <div id="bmi-result"></div>
+    </div>
+  </div>
+
+  <script src="/js/nutrition.js"></script>
+</body>
+</html>

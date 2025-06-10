@@ -8,20 +8,20 @@
     }
 
     header {
-      background: linear-gradient(to right, #ff9900, #ff6600);
+      background: linear-gradient(to right, #1E90FF, #1E90FF);
       color: white;
       padding: 2rem;
       text-align: center;
     }
 
     .content {
-      max-width: 1200px;
+      max-width: 1500px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
     h2 {
-      color: #ff6600;
+      color: #1E90FF;
       text-align: center;
       margin-bottom: 1rem;
     }
@@ -35,12 +35,12 @@
     }
 
     .tip-card {
-      background: #fffaf0;
+      background: #f8f9fc;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 1.5rem;
       text-align: center;
-      width: 260px;
+      width: 350px;
       transition: transform 0.2s;
     }
 
@@ -49,15 +49,15 @@
     }
 
     .tip-card img {
-      width: 100%;
-      height: 160px;
+      width: 350px;
+      height: 300px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
     }
 
     .tip-card h3 {
-      color: #ff6600;
+      color: #1E90FF;
       margin-top: 0;
     }
 
@@ -67,7 +67,7 @@
     }
 
     .bmi-section {
-      background: #fffaf0;
+      background: #f8f9fc;
       padding: 2.5rem;
       margin-top: 4rem;
       border-radius: 16px;
@@ -83,20 +83,20 @@
       margin: 0.6rem 0;
       width: 100%;
       max-width: 350px;
-      border: 2px solid #ffcc80;
+      border: 2px solid #1E90FF;
       border-radius: 8px;
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
 
     .bmi-section input:focus {
-      border-color: #ff9900;
+      border-color: #1E90FF;
       outline: none;
     }
 
     .bmi-section button {
       padding: 0.8rem 1.5rem;
-      background-color: #ff6600;
+      background-color: #1E90FF;
       color: white;
       border: none;
       border-radius: 8px;
@@ -106,13 +106,13 @@
     }
 
     .bmi-section button:hover {
-      background-color: #cc5200;
+      background-color: #1E90FF;
     }
 
     #bmi-result {
       margin-top: 1rem;
       font-weight: bold;
-      color: #e65100;
+      color: #1E90FF;
       font-size: 1.1rem;
     }
   
