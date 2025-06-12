@@ -65,7 +65,15 @@ router.get('/supplements', (req, res) => {
         lang: req.locale || 'en',
         loggedInUser: req.session.user || null
     });
+    
 });
 
-module.exports = router;
+router.get('/about', (req, res) => {
+    res.render('about', {
+        title: res.__('about_us_page_title'), // Use the specific about page title from i18n
+        user: req.session.user === undefined ? "" : req.session.user,
+        lang: req.locale, // Pass the current language for the <html> tag
+        translations: res.locals.translations // **Crucial: Pass the entire translations object**
+    });
+});
 module.exports = router;

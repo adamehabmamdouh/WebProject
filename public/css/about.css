@@ -2,6 +2,132 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 /* General Styles */
+.main-header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode .main-header {
+    background-color: #222;
+}
+
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.dark-mode .logo a {
+    color: #66b3ff;
+}
+
+.logo img {
+    height: 50px;
+    width: 50px;
+    margin-right: 0.7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links li a {
+    color: #555;
+    padding: 0.5rem 0;
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-links li a.active::after,
+.nav-links li a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-links li a.active::after,
+.nav-links li a:hover::after {
+    transform: scaleX(1);
+}
+
+.dark-mode .nav-links li a {
+    color: #ddd;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-actions button {
+    background: none;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 0.7rem 1.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-actions button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.dark-mode .nav-actions button {
+    border-color: #66b3ff;
+    color: #66b3ff;
+}
+
+.dark-mode .nav-actions button:hover {
+    background-color: #66b3ff;
+    color: #222;
+}
+
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.dark-mode .mobile-nav-toggle {
+    color: #66b3ff;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -47,7 +173,7 @@ body.dark-mode * {
     font-size: 52px;
     font-weight: 700;
     margin-bottom: 30px;
-    color: #FF4500;
+    color:#007bff;
     animation: fadeInUp 1s ease-in-out;
     position: relative;
     z-index: 2;
@@ -131,7 +257,7 @@ body.dark-mode * {
 .animated-card p {
     font-size: 22px;
     font-weight: 600;
-    color: #FF4500;
+    color:#007bff;
     z-index: 1;
 }
 
@@ -169,42 +295,5 @@ body.dark-mode .animated-card {
 }
 
 body.dark-mode .animated-card p {
-    color: #FFA07A;
-}
-/* Navigation Bar */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(255, 69, 0, 0.9); /* Orange Red with transparency */
-    padding: 15px 0;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
-}
-
-nav:hover {
-    background-color: rgba(30, 144, 255, 0.9); /* Dodger Blue on hover */
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: #FFFFFF; /* White text for links */
-    text-decoration: none;
-    font-size: 20px;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #FFD700; /* Gold on hover */
+    color:#007bff;
 }
