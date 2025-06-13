@@ -117,4 +117,101 @@
       color: #1E90FF;
       font-size: 1.1rem;
     }
-  
+
+    /* Dark Mode Button Positioning */
+.darkmode-button {
+    background-color:#007bff;
+    color: #FFFFFF; /* Text color is white for light mode button */
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+
+    /* Positioning styles */
+    position: fixed; /* Stays in place when scrolling */
+    bottom: 20px;    /* 20px from the bottom */
+    right: 20px;     /* 20px from the right */
+    z-index: 1000;   /* Ensures it stays on top of other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for visibility */
+}
+
+.darkmode-button:hover {
+    /* Changed to a solid blue color for light mode hover */
+    background-color: #007bff;
+    transform: translateY(-5px); /* Adjusted to match other card hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* --- Dark Mode Styles --- */
+/* These styles apply when the body has the 'dark-mode' class */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+}
+
+body.dark-mode header {
+    background: #2C2C2C; /* Dark gray for header in dark mode */
+    color: #ADD8E6; /* Slightly lighter header text for contrast */
+}
+
+body.dark-mode h2 {
+    color: #ADD8E6; /* Lighter green for headings */
+}
+
+body.dark-mode .tip-card {
+    background-color: #1e1e1e; /* Darker card background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+}
+
+body.dark-mode .tip-card h3 {
+    color:#ADD8E6; /* Lighter heading text */
+}
+
+body.dark-mode .tip-card p {
+    color: #b0b0b0; /* Lighter paragraph text */
+}
+
+body.dark-mode .bmi-section {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .bmi-section h2 {
+    color: #ADD8E6;
+}
+
+body.dark-mode .bmi-section input[type="number"] {
+    background-color: #333;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .bmi-section input::placeholder { /* For placeholder text */
+    color: #999;
+}
+
+body.dark-mode .bmi-section button {
+    background-color: #2C2C2C; /* Darker green button */
+}
+
+body.dark-mode .bmi-section button:hover {
+    background-color: #2C2C2C;
+}
+
+body.dark-mode #bmi-result {
+    color: #ffb74d; /* Adjust result color for dark mode */
+}
+
+/* Optional: If you have a specific dark mode toggle button on this page */
+body.dark-mode .darkmode-button {
+    background-color: #007bff; /* Dark mode button background */
+    color: #000; /* Text color is black for dark mode button */
+}
+
+body.dark-mode .darkmode-button:hover {
+    background-color: #4d94ff; /* A slightly darker blue for hover effect in dark mode */
+    transform: translateY(-5px); /* Adjusted to match other card hover */
+}

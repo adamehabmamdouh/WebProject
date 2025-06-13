@@ -1,21 +1,39 @@
 
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-        const body = document.body;
-        body.classList.toggle('dark-mode');
+    // --- Dark Mode Toggle ---
+const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
+const popupContainer = document.getElementById('popupContainer'); // Get the popup container
 
-        // Save the dark mode preference in localStorage
-        const isDarkMode = body.classList.contains('dark-mode');
-        localStorage.setItem('darkModeEnabled', isDarkMode);
-    }
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
 
-    // Function to apply dark mode on page load
-    function applyDarkMode() {
-        const isDarkMode = localStorage.getItem('darkModeEnabled') === 'true';
-        if (isDarkMode) {
-            document.body.classList.add('dark-mode');
+    if (popupContainer) { // Check if popupContainer exists before trying to style it
+        if (document.body.classList.contains('dark-mode')) {
+            popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            popupContainer.style.color = 'white';
+        } else {
+            popupContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            popupContainer.style.color = 'black';
         }
     }
+
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+if (darkModeToggleBtn) {
+    darkModeToggleBtn.addEventListener('click', toggleDarkMode);
+}
+
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (popupContainer) {
+        popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        popupContainer.style.color = 'white';
+    }
+}
 
     // Function to validate the password
     function validatePassword(event) {
