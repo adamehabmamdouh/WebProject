@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Memberships | BigEkramy</title>
     <link rel="stylesheet" href="/css/Memberships.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  
 </head>
 <body>
     <header class="main-header">
@@ -28,8 +28,7 @@
 
             <div class="nav-actions">
                 <% if (!user) { %>
-                    <button onclick="window.location.href='/signup'">Sign Up</button>
-                    <button onclick="window.location.href='/login'">Login</button>
+                    
                 <% } else { %>
                     <span style="margin-right: 10px;">Welcome, <%= user.username %>!</span>
                     <button onclick="window.location.href='/logout'">Logout</button>
