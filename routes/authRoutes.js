@@ -170,14 +170,21 @@ router.post('/login', async (req, res) => {
             return res.redirect('/login');
         }
 
+        // Store user info in session
         req.session.user = {
             _id: user._id,
             username: user.username,
             email: user.email,
-            isAdmin: user.isAdmin, // Make sure isAdmin is carried over
-            membershipType: user.membershipType // Ensure membershipType is in session
+            role: user.role,
+            membershipType: user.membershipType
         };
-        res.redirect('/memberships'); // Redirect to memberships page after login
+
+        // Redirect based on role
+        if (user.role === 'admin') {
+            res.redirect('http://localhost:3000/admin');
+        } else {
+            res.redirect('/memberships');
+        }
     } catch (err) {
         console.error('Login error:', err);
         req.session.loginError = res.__('login_failed_general');

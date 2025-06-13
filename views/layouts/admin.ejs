@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= lang %>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title><%= title %> - Admin Panel</title>
     <link rel="stylesheet" href="/css/admin.css">
-   
+    <!-- Add meta tags to prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="/admin">Dashboard</a></li>
-            <li><a href="#" id="usersButton">Users</a></li>
+           
             <li><a href="/logout">Logout</a></li>
         </ul>
     </nav>
@@ -40,12 +43,7 @@
                     <label for="confirmPassword">Confirm Password:</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
-                <div class="form-group checkbox-group">
-                    <label>
-                        <input type="checkbox" id="isAdmin" name="isAdmin">
-                        Make this user an admin
-                    </label>
-                </div>
+                
                 <button type="submit" class="add-btn">Add User</button>
             </form>
         </div>
@@ -58,7 +56,7 @@
                     <tr>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>Role</th>
+                       
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -68,7 +66,7 @@
                             <tr data-user-id="<%= user._id %>">
                                 <td><%= user.username %></td>
                                 <td><%= user.email %></td>
-                                <td><%= user.isAdmin ? 'Admin' : 'User' %></td>
+                               
                                 <td>
                                     <button onclick="deleteUser('<%= user._id %>')" class="delete-btn">Delete</button>
                                 </td>

@@ -1,49 +1,48 @@
 <!DOCTYPE html>
-<html lang="<%= lang %>"> <% // Use lang variable from res.locals for i18n %>
+<html lang="<%= lang %>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> - FitnessHub</title> <% // Use title variable from route, add site name %>
+    <title><%= title %> - FitnessHub</title>
 
     <!-- Static CSS files -->
-    <link rel="stylesheet" href="/css/login.css"> <% // Correct relative path for static files %>
-   
+    <link rel="stylesheet" href="/css/login.css">
     
 </head>
 <body>
     <button class="darkmode-button" onclick="toggleDarkMode()"><%= __('dark_mode_button') %></button>
 
     <div class="login-container">
-        <h2 class="login-title"><%= __('login_heading') %></h2> <% // i18n for heading %>
+        <h2 class="login-title"><%= __('login_heading') %></h2>
 
-        <% if (error) { %> <% // Display server-side error message if passed from route %>
+        <% if (error) { %>
             <p class="error-message"><%= error %></p>
         <% } %>
 
-        <% if (successMessage) { %> <% // Display success message if passed (e.g., after signup) %>
+        <% if (successMessage) { %>
             <p class="success-message"><%= successMessage %></p>
         <% } %>
 
-        <form action="/login" method="POST"> <% // Set form action to POST to /login route %>
+        <form action="/login" method="POST">
             <div class="input-group">
-                <label for="username_email"><%= __('username_email_label') %></label> <% // i18n for label %>
+                <label for="username_email"><%= __('username_email_label') %></label>
                 <input type="text" id="username_email" name="username" placeholder="<%= __('enter_username_email_placeholder') %>" required>
             </div>
 
             <div class="input-group">
-                <label for="password"><%= __('password_label') %></label> <% // i18n for label %>
+                <label for="password"><%= __('password_label') %></label>
                 <input type="password" id="password" name="password" placeholder="<%= __('enter_password_placeholder') %>" required>
             </div>
 
-            <button type="submit" class="login-button"><%= __('login') %></button> <% // i18n for button %>
+            <button type="submit" class="login-button"><%= __('login') %></button>
         </form>
 
         <p class="signup-link">
-            <%= __('dont_have_account') %> <a href="/signup"><%= __('signup_link') %></a> <% // i18n for link text and correct EJS path %>
+            <%= __('dont_have_account') %> <a href="/signup"><%= __('signup_link') %></a>
         </p>
 
         <p class="forgot-password-link">
-            <a href="/forgot-password"><%= __('forgot_password_link') %></a> <% // Add a link for forgot password %>
+            <a href="/forgot-password"><%= __('forgot_password_link') %></a>
         </p>
     </div>
 

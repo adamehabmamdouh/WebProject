@@ -28,7 +28,12 @@ const userSchema = new mongoose.Schema({
         required: false, // Not strictly required if username is the primary identifier
         trim: true
     },
-        membershipType: { // New field for membership
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    },
+    membershipType: { // New field for membership
         type: String,
         enum: ['None', 'Basic', 'Premium', 'Elite'], // Define allowed values
         default: 'None' // Default membership type

@@ -76,4 +76,16 @@ document.getElementById('addUserForm').addEventListener('submit', async (e) => {
 document.getElementById('usersButton').addEventListener('click', function() {
     const userList = document.getElementById('userList');
     userList.style.display = userList.style.display === 'none' ? 'block' : 'none';
+});
+
+// Handle back button for admin pages
+document.addEventListener('DOMContentLoaded', function() {
+    // Add a history entry when the page loads
+    history.pushState(null, null, location.href);
+
+    // Handle back button
+    window.addEventListener('popstate', function(event) {
+        // Redirect to login page
+        window.location.href = '/login';
+    });
 }); 
