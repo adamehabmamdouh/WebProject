@@ -1,8 +1,11 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 /* General Body Styles */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #F8F9FA; /* Light gray background */
     color: #333333; /* Dark gray text */
     line-height: 1.6;

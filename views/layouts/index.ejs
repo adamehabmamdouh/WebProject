@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -23,7 +24,6 @@
                 <li><a href="/login"><%= __('login_link') %></a></li>
             </ul>
             <div class="nav-actions">
-                <button class="quick-test-btn"><%= __('quick_test_button') %></button>
                 <button class="dark-mode-toggle"><%= __('dark_mode_button') %></button>
                 <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
                     <i class="fas fa-bars"></i>
@@ -72,12 +72,6 @@
                     <p><%= __('supplement_advisory_desc') %></p>
                     <a href="/supplements" class="learn-more"><%= __('learn_more_button') %> <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card personal-training">
-                    <i class="fas fa-user-tie"></i>
-                    <h3><%= __('one_on_one_training_heading') %></h3>
-                    <p><%= __('one_on_one_training_desc') %></p>
-                    <a href="/personal-training" class="learn-more"><%= __('learn_more_button') %> <i class="fas fa-arrow-right"></i></a>
-                </div>
             </div>
         </section>
 
@@ -100,11 +94,9 @@
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-                    <p><a href="tel:+15559876543">+1 (555) 987-6543</a></p>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <p><a href="mailto:support@BigEkramy.com">support@BigEkramy.com</a></p>
                     <p><a href="mailto:info@BigEkramy.com">info@BigEkramy.com</a></p>
                 </div>
                 <div class="contact-item">
