@@ -1,4 +1,3 @@
-// Function to delete a user
 async function deleteUser(userId) {
     if (!confirm('Are you sure you want to delete this user?')) {
         return;
@@ -13,13 +12,11 @@ async function deleteUser(userId) {
         });
 
         if (response.ok) {
-            // Remove the user row from the table
             const row = document.querySelector(`tr[data-user-id="${userId}"]`);
             if (row) {
                 row.remove();
             }
             alert('User deleted successfully');
-            // Refresh the page to update the user list
             location.reload();
         } else {
             throw new Error('Failed to delete user');
@@ -30,10 +27,9 @@ async function deleteUser(userId) {
     }
 }
 
-// Handle new user creation
 document.getElementById('addUserForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(e.target);
     const password = formData.get('password');
     const confirmPassword = formData.get('confirmPassword');
@@ -60,8 +56,8 @@ document.getElementById('addUserForm').addEventListener('submit', async (e) => {
 
         if (response.ok) {
             alert('User created successfully!');
-            e.target.reset(); // Clear the form
-            location.reload(); // Refresh to show new user
+            e.target.reset();
+            location.reload();
         } else {
             const data = await response.json();
             throw new Error(data.error || 'Failed to create user');
@@ -72,20 +68,15 @@ document.getElementById('addUserForm').addEventListener('submit', async (e) => {
     }
 });
 
-// Show/hide user list
 document.getElementById('usersButton').addEventListener('click', function() {
     const userList = document.getElementById('userList');
     userList.style.display = userList.style.display === 'none' ? 'block' : 'none';
 });
 
-// Handle back button for admin pages
 document.addEventListener('DOMContentLoaded', function() {
-    // Add a history entry when the page loads
     history.pushState(null, null, location.href);
 
-    // Handle back button
     window.addEventListener('popstate', function(event) {
-        // Redirect to login page
         window.location.href = '/login';
     });
-}); 
+});

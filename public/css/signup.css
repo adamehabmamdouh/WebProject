@@ -1,12 +1,11 @@
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #F8F9FA; /* Light gray background */
-    color: #333333; /* Dark gray text */
+    background-color: #F8F9FA; 
+    color: #333333; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,18 +13,16 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode Styles */
 body.dark-mode {
-    background-color: #1A1A1A; /* Dark background */
-    color: #FFFFFF; /* White text */
+    background-color: #1A1A1A; 
+    color: #FFFFFF; 
 }
 
-/* Sign-Up Container */
 .signup-container {
-    background-color: #FFFFFF; /* White background */
+    background-color: #FFFFFF; 
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
     width: 100%;
     max-width: 400px;
     text-align: center;
@@ -33,19 +30,17 @@ body.dark-mode {
 }
 
 body.dark-mode .signup-container {
-    background-color: #2C2C2C; /* Dark background for dark mode */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Darker shadow for contrast in dark mode */
-    /* Removed the orange-red shadow here, keeping it more neutral in dark mode */
+    background-color: #2C2C2C; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
-/* Sign-Up Title */
 .signup-title {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #1E90FF; /* Dodger Blue for title */
+    color: #1E90FF; 
 }
 
-/* Input Fields */
+
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -55,40 +50,39 @@ body.dark-mode .signup-container {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
-    color: #333333; /* Dark gray text */
+    color: #333333; 
 }
 
 body.dark-mode .input-group label {
-    color: #FFFFFF; /* White text for dark mode */
+    color: #FFFFFF; 
 }
 
 .input-group input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #CCCCCC; /* Light gray border */
+    border: 1px solid #CCCCCC; 
     border-radius: 5px;
     transition: border-color 0.3s ease;
 }
 
 .input-group input:focus {
-    border-color: #1E90FF; /* Dodger Blue border on focus */
+    border-color: #1E90FF; 
     outline: none;
 }
 
 body.dark-mode .input-group input {
-    background-color: #1A1A1A; /* Dark background for input */
-    color: #FFFFFF; /* White text for input */
-    border-color: #555555; /* Dark gray border */
+    background-color: #1A1A1A; 
+    color: #FFFFFF; 
+    border-color: #555555; 
 }
 
-/* Sign-Up Button */
 .signup-button {
     width: 100%;
     padding: 15px;
     font-size: 18px;
-    color: #FFFFFF; /* White text */
-    background-color: #1E90FF; /* Dodger Blue background */
+    color: #FFFFFF; 
+    background-color: #1E90FF; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -96,40 +90,38 @@ body.dark-mode .input-group input {
 }
 
 .signup-button:hover {
-    background-color: #007bff; /* Slightly darker blue on hover */
+    background-color: #007bff; 
     transform: scale(1.05);
 }
 
-/* Login Link */
 .login-link {
     margin-top: 20px;
     font-size: 14px;
-    color: #333333; /* Dark gray text */
+    color: #333333; 
 }
 
 body.dark-mode .login-link {
-    color: #FFFFFF; /* White text for dark mode */
+    color: #FFFFFF; 
 }
 
 .login-link a {
-    color: #1E90FF; /* Dodger Blue for link */
+    color: #1E90FF; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .login-link a:hover {
-    color: #007bff; /* Slightly darker blue on hover */
+    color: #007bff; 
 }
 
-/* Dark Mode Toggle Button */
 .darkmode-button {
     position: fixed;
     top: 20px;
     right: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    color: #FFFFFF; /* White text */
-    background-color: #1E90FF; /* Dodger Blue background */
+    color: #FFFFFF; 
+    background-color: #1E90FF; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -137,6 +129,6 @@ body.dark-mode .login-link {
 }
 
 .darkmode-button:hover {
-    background-color: #007bff; /* Slightly darker blue on hover */
+    background-color: #007bff; 
     transform: scale(1.1);
 }

@@ -1,22 +1,18 @@
-/* Custom styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Smooth transitions for dark mode */
 .dark {
     color-scheme: dark;
 }
 
-/* Custom focus styles */
 *:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -44,4 +40,4 @@ body {
 
 .dark ::-webkit-scrollbar-thumb:hover {
     background: #6b7280;
-} 
+}

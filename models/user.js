@@ -1,17 +1,16 @@
-// models/User.js
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs'); // For password hashing - make sure to 'npm install bcryptjs'
+const bcrypt = require('bcryptjs'); 
 
 const userSchema = new mongoose.Schema({
-    username: { // Using username for a distinct login identifier
+    username: { 
         type: String,
-        required: [true, 'Please add a username'], // Custom message
+        required: [true, 'Please add a username'], 
         unique: true,
         trim: true
     },
     email: {
         type: String,
-        required: [true, 'Please add an email'], // Custom message
+        required: [true, 'Please add an email'], 
         unique: true,
         trim: true,
         lowercase: true,
@@ -19,13 +18,12 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please add a password'], // Custom message
-        minlength: [6, 'Password must be at least 6 characters long'] // Custom message
+        required: [true, 'Please add a password'], 
+        minlength: [6, 'Password must be at least 6 characters long'] 
     },
-    // If you still want a 'name' field that's just a display name:
     name: {
         type: String,
-        required: false, // Not strictly required if username is the primary identifier
+        required: false, 
         trim: true
     },
     role: {
@@ -33,10 +31,10 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
-    membershipType: { // New field for membership
+    membershipType: { 
         type: String,
-        enum: ['None', 'Basic', 'Premium', 'Elite'], // Define allowed values
-        default: 'None' // Default membership type
+        enum: ['None', 'Basic', 'Premium', 'Elite'], 
+        default: 'None' 
     },
     createdAt: {
         type: Date,
@@ -44,26 +42,24 @@ const userSchema = new mongoose.Schema({
     }
 
 }, {
-    timestamps: true // Mongoose automatically adds `createdAt` and `updatedAt`
+    timestamps: true 
 });
 
-// --- Pre-save hook to hash password before saving ---
 userSchema.pre('save', async function(next) {
-    // Only hash if the password has been modified (or is new)
     if (!this.isModified('password')) return next();
 
     try {
-        const salt = await bcrypt.genSalt(10); // Generate a salt
-        this.password = await bcrypt.hash(this.password, salt); // Hash the password
+        const salt = await bcrypt.genSalt(10); 
+        this.password = await bcrypt.hash(this.password, salt); 
         next();
     } catch (err) {
-        next(err); // Pass error to the next middleware
+        next(err); 
     }
 });
 
-// --- Method to compare password for login ---
+
 userSchema.methods.comparePassword = async function(candidatePassword) {
-    // Compare the given password with the hashed password in the database
+    
     return await bcrypt.compare(candidatePassword, this.password);
 };
 

@@ -1,7 +1,6 @@
-/* Import Google Font */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-/* General Styles */
 .main-header {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -132,13 +131,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #fdfcfb, #e2d1c3); /* Soft gradient */
+    background: linear-gradient(to bottom, #fdfcfb, #e2d1c3); 
     color: #333333;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
 }
 
-/* Dark Mode Styles */
+
 body.dark-mode {
     background: linear-gradient(to bottom, #1a1a1a, #333333);
     color: #ffffff;
@@ -148,7 +147,7 @@ body.dark-mode * {
     color: #cccccc !important;
 }
 
-/* About Us Content */
+
 .content {
     padding: 120px 30px 60px 30px;
     text-align: center;
@@ -189,14 +188,13 @@ body.dark-mode * {
     z-index: 2;
 }
 
-/* Floating Animation for Background Texture */
 @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(20px); }
     100% { transform: translateY(0); }
 }
 
-/* Animated Cards Section */
+
 .animated-cards {
     display: flex;
     justify-content: center;
@@ -289,7 +287,7 @@ body.dark-mode * {
     }
 }
 
-/* Dark Mode Card Fix */
+
 body.dark-mode .animated-card {
     background: #2a2a2a;
 }

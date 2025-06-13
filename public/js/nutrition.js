@@ -1,50 +1,46 @@
 function calculateBMI() {
-  const weightInput = document.getElementById('weight').value;
-  const heightInput = document.getElementById('height').value;
-  const resultDiv = document.getElementById('bmi-result');
+    const weightInput = document.getElementById('weight').value;
+    const heightInput = document.getElementById('height').value;
+    const resultDiv = document.getElementById('bmi-result');
 
-  const weight = parseFloat(weightInput);
-  const heightCm = parseFloat(heightInput);
+    const weight = parseFloat(weightInput);
+    const heightCm = parseFloat(heightInput);
 
-  // Check for invalid inputs
-  if (
-    isNaN(weight) || isNaN(heightCm) ||
-    weightInput.trim() === "" || heightInput.trim() === "" ||
-    weight <= 0 || heightCm <= 0
-  ) {
-    resultDiv.innerText = "⚠️ Please enter valid numbers only (no letters or symbols).";
-    resultDiv.style.color = "#d32f2f"; // Red color for error
-    return;
-  }
+    if (
+        isNaN(weight) || isNaN(heightCm) ||
+        weightInput.trim() === "" || heightInput.trim() === "" ||
+        weight <= 0 || heightCm <= 0
+    ) {
+        resultDiv.innerText = "⚠️ Please enter valid numbers only (no letters or symbols).";
+        resultDiv.style.color = "#d32f2f";
+        return;
+    }
 
-  const heightM = heightCm / 100;
-  const bmi = weight / (heightM * heightM);
-  let category = "";
+    const heightM = heightCm / 100;
+    const bmi = weight / (heightM * heightM);
+    let category = "";
 
-  if (bmi < 18.5) {
-    category = "Underweight";
-  } else if (bmi < 24.9) {
-    category = "Normal weight";
-  } else if (bmi < 29.9) {
-    category = "Overweight";
-  } else {
-    category = "Obese";
-  }
+    if (bmi < 18.5) {
+        category = "Underweight";
+    } else if (bmi < 24.9) {
+        category = "Normal weight";
+    } else if (bmi < 29.9) {
+        category = "Overweight";
+    } else {
+        category = "Obese";
+    }
 
-  resultDiv.innerText = `✅ Your BMI is ${bmi.toFixed(1)} (${category})`;
-  resultDiv.style.color = "#e65100"; // Back to normal result color
+    resultDiv.innerText = `✅ Your BMI is ${bmi.toFixed(1)} (${category})`;
+    resultDiv.style.color = "#e65100";
 }
 
-
-
-// --- Dark Mode Toggle ---
 const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
-const popupContainer = document.getElementById('popupContainer'); // Get the popup container
+const popupContainer = document.getElementById('popupContainer');
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
 
-    if (popupContainer) { // Check if popupContainer exists before trying to style it
+    if (popupContainer) {
         if (document.body.classList.contains('dark-mode')) {
             popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
             popupContainer.style.color = 'white';
@@ -72,4 +68,3 @@ if (localStorage.getItem('theme') === 'dark') {
         popupContainer.style.color = 'white';
     }
 }
-

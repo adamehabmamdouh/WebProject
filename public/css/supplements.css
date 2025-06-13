@@ -1,9 +1,6 @@
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-/* General Styles */
 :root {
-    /* Default Colors (Light Mode) */
     --current-bg: #f7f7f7;
     --current-text: #333;
     --current-card-bg: #fff;
@@ -11,7 +8,7 @@
     --current-border: #eee;
     --current-accent-blue: #007bff;
     --current-accent-blue-hover: #0056b3;
-    --current-accent-blue-light: #e9ecef; /* Light blue background for hero */
+    --current-accent-blue-light: #e9ecef;
     --current-category-tag-bg: #e0e0e0;
     --current-category-tag-text: #555;
     --current-footer-bg: #333;
@@ -21,15 +18,14 @@
 }
 
 body.dark-mode {
-    /* Dark Mode Overrides (user-friendly) */
     --current-bg: #1a1a1a;
     --current-text: #eee;
-    --current-card-bg: #2a2a2a; /* Slightly lighter than body for contrast */
+    --current-card-bg: #2a2a2a;
     --current-header-bg: #222;
     --current-border: #444;
-    --current-accent-blue: #66b3ff; /* Lighter blue for dark mode */
+    --current-accent-blue: #66b3ff;
     --current-accent-blue-hover: #99ccff;
-    --current-accent-blue-light: #3b3b3b; /* Darker subtle background for hero */
+    --current-accent-blue-light: #3b3b3b;
     --current-category-tag-bg: #3b3b3b;
     --current-category-tag-text: #ccc;
     --current-footer-bg: #111;
@@ -54,7 +50,6 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Header (Hero Section) */
 .hero {
     background-color: var(--current-accent-blue-light);
     padding: 5rem 2rem;
@@ -88,10 +83,9 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Dark Mode Button Positioning */
 .darkmode-button {
     background-color: var(--current-accent-blue);
-    color: var(--current-card-bg); /* Text color should contrast with button background */
+    color: var(--current-card-bg);
     padding: 0.8rem 1.8rem;
     border: none;
     border-radius: 5px;
@@ -100,28 +94,25 @@ a {
     font-weight: 600;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 
-    /* Positioning styles */
-    position: fixed; /* Stays in place when scrolling */
-    bottom: 20px;    /* 20px from the bottom */
-    right: 20px;     /* 20px from the right */
-    z-index: 1000;   /* Ensures it stays on top of other content */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for visibility */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .darkmode-button:hover {
     background-color: var(--current-accent-blue-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Main Content Wrapper */
 .content-wrapper {
     padding: 3rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Introduction Section */
 .intro-section {
     text-align: center;
     margin-bottom: 3rem;
@@ -144,79 +135,70 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Supplement Grid */
 .supplement-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
-/* --- Card Flip Styles --- */
-
-/* Outer container for the card, sets perspective for 3D effect */
 .supplement-card {
     position: relative;
-    width: 100%; /* Take full width of grid column */
-    min-height: 220px; /* Ensures consistent card height */
-    perspective: 1000px; /* Provides the 3D perspective */
-    /* Remove previous background, border, shadow from here */
+    width: 100%;
+    min-height: 220px;
+    perspective: 1000px;
     background-color: transparent;
     border: none;
     box-shadow: none;
-    padding: 0; /* Remove internal padding */
-    display: block; /* Override flex if it was there */
-    cursor: pointer; /* Indicate interactivity */
+    padding: 0;
+    display: block;
+    cursor: pointer;
 }
 
-/* The actual element that rotates */
 .supplement-card-inner {
     position: absolute;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s; /* Smooth flip animation */
-    transform-style: preserve-3d; /* Children participate in 3D space */
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Shadow on the inner card */
-    border: 1px solid var(--current-border); /* Border on the inner card */
-    background-color: var(--current-card-bg); /* Background color for the inner card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--current-border);
+    background-color: var(--current-card-bg);
 }
 
-/* Dark mode specific shadow for inner card */
 body.dark-mode .supplement-card-inner {
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
-/* Front and back faces of the card */
 .supplement-card-front,
 .supplement-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Hides the back of the element when facing away */
-    -webkit-backface-visibility: hidden; /* For Safari compatibility */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     border-radius: 10px;
-    padding: 1.8rem; /* Padding inside the front/back content */
+    padding: 1.8rem;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    text-align: center; /* Ensure text is centered by default */
-    background-color: var(--current-card-bg); /* Explicit background for front/back for clarity */
-    color: var(--current-text); /* Ensure text color */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--current-card-bg);
+    color: var(--current-text);
 }
 
 .supplement-card-front {
-    transform: rotateY(0deg); /* Stays at 0 degrees for the front */
-    z-index: 2; /* Ensures front is on top initially */
+    transform: rotateY(0deg);
+    z-index: 2;
 }
 
 .supplement-card-back {
-    transform: rotateY(180deg); /* Starts rotated 180 degrees for the back */
-    z-index: 1; /* Keeps back behind front initially */
+    transform: rotateY(180deg);
+    z-index: 1;
 }
 
-/* Content specific styles for front/back */
 .supplement-card-front .category {
     margin-bottom: 0.8rem;
     background-color: var(--current-category-tag-bg);
@@ -224,48 +206,44 @@ body.dark-mode .supplement-card-inner {
 }
 
 .supplement-card-front .supplement-name {
-    margin: 0; /* Remove default h3 margins for tighter fit */
+    margin: 0;
     font-size: 1.6rem;
     line-height: 1.2;
-    color: var(--current-accent-blue); /* Apply accent color to name */
+    color: var(--current-accent-blue);
 }
 
 .supplement-card-back .details {
-    text-align: left; /* Align text within details to left */
-    width: 100%; /* Ensure it takes full width of padding */
-    box-sizing: border-box; /* Include padding in width calculation */
-    overflow-y: auto; /* Enable scroll if content overflows */
-    margin: 0; /* Remove default margins */
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin: 0;
 }
 
 .supplement-card-back .details p {
-    margin-bottom: 0.8em; /* Spacing between paragraphs */
+    margin-bottom: 0.8em;
     line-height: 1.5;
-    color: var(--current-text); /* Ensure paragraph text color */
+    color: var(--current-text);
 }
 
 .supplement-card-back .details p:last-child {
-    margin-bottom: 0; /* No bottom margin on the last paragraph */
+    margin-bottom: 0;
 }
 
 .supplement-card-back .details strong {
-    color: var(--current-text); /* Ensure strong text color */
+    color: var(--current-text);
 }
 
-/* FLIP LOGIC: Apply rotation to inner card */
-.supplement-card:hover .supplement-card-inner, /* Flip on hover */
-.supplement-card.is-flipped .supplement-card-inner { /* Flip on click (JS adds this class) */
+.supplement-card:hover .supplement-card-inner,
+.supplement-card.is-flipped .supplement-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Ensure outer card doesn't have its own transform on hover */
 .supplement-card:hover {
     transform: none;
     box-shadow: none;
 }
 
-
-/* Footer Styles */
 footer {
     background-color: var(--current-footer-bg);
     color: var(--current-footer-text);
@@ -288,8 +266,6 @@ footer strong {
     transition: color 0.3s ease;
 }
 
-
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .hero {
         padding: 4rem 1.5rem;
@@ -304,9 +280,9 @@ footer strong {
     }
 
     .darkmode-button {
-        bottom: 15px; /* Adjust for smaller screens */
+        bottom: 15px;
         right: 15px;
-        padding: 0.7rem 1.4rem; /* Slightly smaller button */
+        padding: 0.7rem 1.4rem;
     }
 
     .content-wrapper {
@@ -321,9 +297,8 @@ footer strong {
         grid-template-columns: 1fr;
     }
 
-    /* Card adjustments for smaller screens */
     .supplement-card {
-        min-height: 200px; /* Adjust min-height if content is shorter */
+        min-height: 200px;
     }
     .supplement-card-front,
     .supplement-card-back {
@@ -351,7 +326,7 @@ footer strong {
     }
 
     .darkmode-button {
-        bottom: 10px; /* Further adjust for very small screens */
+        bottom: 10px;
         right: 10px;
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
@@ -369,9 +344,8 @@ footer strong {
         font-size: 0.9rem;
     }
 
-    /* Card adjustments for very small screens */
     .supplement-card {
-        min-height: 180px; /* Adjust min-height */
+        min-height: 180px;
     }
     .supplement-card-front,
     .supplement-card-back {

@@ -1,4 +1,3 @@
-// Import your routes here...
 const authRoutes = require("./authRoutes");
 const userRoutes = require("./userRoutes");
 const indexRoutes = require("./indexRoutes");
@@ -11,7 +10,7 @@ function setupRoutes(app) {
   app.use((req, res, next) => {
    res.render("404", {
   currentPage: "404",
-  title: "Page Not Found", // ← ADD THIS LINE
+  title: "Page Not Found", 
   user: req.session.user === undefined ? "" : req.session.user,
     });
   });

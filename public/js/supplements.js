@@ -1,12 +1,10 @@
-
-// --- Dark Mode Toggle ---
 const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
-const popupContainer = document.getElementById('popupContainer'); // Get the popup container
+const popupContainer = document.getElementById('popupContainer');
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
 
-    if (popupContainer) { // Check if popupContainer exists before trying to style it
+    if (popupContainer) {
         if (document.body.classList.contains('dark-mode')) {
             popupContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
             popupContainer.style.color = 'white';
@@ -35,7 +33,6 @@ if (localStorage.getItem('theme') === 'dark') {
     }
 }
 
-// Check for saved preference
 document.addEventListener('DOMContentLoaded', () => {
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
     if (savedDarkMode) {
@@ -45,10 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const supplementCards = document.querySelectorAll('.supplement-card');
 
 supplementCards.forEach(card => {
-    
     card.addEventListener('click', () => {
         card.classList.toggle('is-flipped');
     });
-
-  
 });

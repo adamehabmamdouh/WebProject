@@ -1,28 +1,24 @@
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-/* General Body Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #F8F9FA; /* Light gray background */
-    color: #333333; /* Dark gray text */
+    background-color: #F8F9FA;
+    color: #333333;
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode Styles */
 body.dark-mode {
-    background-color: #1a1a1a; /* Dark background */
-    color: #E0E0E0; /* Light gray text for contrast */
+    background-color: #1a1a1a;
+    color: #E0E0E0;
 }
 
-/* Navigation Bar - Updated Styles for new shape */
 nav {
-    background-color: #fff; /* White background for the nav */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    padding: 1rem 2rem; /* Padding for the nav container */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 1rem 2rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -30,59 +26,57 @@ nav {
 }
 
 body.dark-mode nav {
-    background-color: #222; /* Darker background in dark mode */
+    background-color: #222;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: center; /* Center the links */
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 nav ul li {
-    margin: 0 1.5rem; /* Spacing between links */
+    margin: 0 1.5rem;
 }
 
 nav ul li a {
-    color: #555; /* Darker text color for links */
+    color: #555;
     text-decoration: none;
-    font-weight: 500; /* Medium font weight */
+    font-weight: 500;
     font-size: 1.1em;
-    padding: 0.5rem 0; /* Padding for link clickable area */
-    position: relative; /* Needed for the underline effect */
+    padding: 0.5rem 0;
+    position: relative;
     transition: color 0.3s ease;
 }
 
 body.dark-mode nav ul li a {
-    color: #ddd; /* Lighter text in dark mode */
+    color: #ddd;
 }
 
-/* Underline effect for hover and active */
 nav ul li a::after {
     content: '';
     position: absolute;
-    bottom: -3px; /* Position below the text */
+    bottom: -3px;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #007bff; /* Blue underline */
-    transform: scaleX(0); /* Hidden by default */
+    background-color: #007bff;
+    transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
 
 nav ul li a:hover::after,
-nav ul li a.active::after { /* Add 'active' class to current page link if desired */
-    transform: scaleX(1); /* Show underline on hover/active */
+nav ul li a.active::after {
+    transform: scaleX(1);
 }
 
-/* Banner Section */
 .banner-container {
     position: relative;
     width: 100%;
-    height: 300px; /* Fixed height for the banner */
+    height: 300px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -93,20 +87,20 @@ nav ul li a.active::after { /* Add 'active' class to current page link if desire
 .banner-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    filter: brightness(60%); /* Darken image slightly */
+    object-fit: cover;
+    filter: brightness(60%);
     transition: filter 0.3s ease;
 }
 
 body.dark-mode .banner-image {
-    filter: brightness(40%); /* Even darker image in dark mode */
+    filter: brightness(40%);
 }
 
 .banner-overlay {
     position: absolute;
     color: #FFFFFF;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 1; /* Ensure text is above image */
+    z-index: 1;
 }
 
 .banner-title {
@@ -118,31 +112,30 @@ body.dark-mode .banner-image {
     font-size: 1.2em;
 }
 
-/* Weekly Calendar Container */
 .weekly-calendar-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #FFFFFF; /* White background for the calendar container */
+    background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    text-align: center; /* Center the main title and description */
+    text-align: center;
 }
 
 body.dark-mode .weekly-calendar-container {
-    background-color: #2C2C2C; /* Dark background for dark mode */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+    background-color: #2C2C2C;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .weekly-calendar-container h2 {
-    color: #1E90FF; /* Dodger Blue */
+    color: #1E90FF;
     font-size: 2.2em;
     margin-bottom: 10px;
 }
 
 body.dark-mode .weekly-calendar-container h2 {
-    color: #ADD8E6; /* Lighter blue in dark mode */
+    color: #ADD8E6;
 }
 
 .calendar-description {
@@ -155,34 +148,32 @@ body.dark-mode .calendar-description {
     color: #B0B0B0;
 }
 
-/* Weekly Calendar Grid */
 .weekly-calendar-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 25px; /* Space between day cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
     padding: 20px;
 }
 
-/* Day Card Styles */
 .day-card {
-    background-color: #F8F9FA; /* Light gray for cards */
+    background-color: #F8F9FA;
     border: 1px solid #E0E0E0;
     border-radius: 8px;
     padding: 25px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    text-align: left; /* Align content within cards */
+    text-align: left;
     display: flex;
     flex-direction: column;
 }
 
 .day-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
+    transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode .day-card {
-    background-color: #3A3A3A; /* Darker background for dark mode cards */
+    background-color: #3A3A3A;
     border-color: #555555;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
@@ -193,14 +184,14 @@ body.dark-mode .day-card:hover {
 
 .day-name {
     font-size: 1.8em;
-    color: #1E90FF; /* Dodger Blue for day names */
+    color: #1E90FF;
     margin-bottom: 15px;
     border-bottom: 2px solid #1E90FF;
     padding-bottom: 10px;
 }
 
 body.dark-mode .day-name {
-    color: #ADD8E6; /* Lighter blue in dark mode */
+    color: #ADD8E6;
     border-bottom-color: #ADD8E6;
 }
 
@@ -212,8 +203,8 @@ body.dark-mode .day-name {
 
 .day-card .split-info:last-of-type {
     margin-bottom: 0;
-    border-bottom: none; /* No border for the last split info in a card */
-    flex-grow: 1; /* Allow last split info to take available space */
+    border-bottom: none;
+    flex-grow: 1;
 }
 
 body.dark-mode .split-info {
@@ -222,23 +213,23 @@ body.dark-mode .split-info {
 
 .split-type {
     font-size: 1.3em;
-    color: #333333; /* Dark gray for split type */
+    color: #333333;
     margin-bottom: 10px;
 }
 
 body.dark-mode .split-type {
-    color: #F8F9FA; /* Lightest gray in dark mode */
+    color: #F8F9FA;
 }
 
 .training-session {
     font-size: 1.1em;
     font-weight: bold;
-    color: #007bff; /* A slightly different blue for training sessions */
+    color: #007bff;
     margin-bottom: 10px;
 }
 
 body.dark-mode .training-session {
-    color: #87CEEB; /* Sky blue for training sessions in dark mode */
+    color: #87CEEB;
 }
 
 .exercise-list {
@@ -268,12 +259,11 @@ body.dark-mode .notes {
     color: #A0A0A0;
 }
 
-/* Footer Styles */
 footer {
     text-align: center;
     padding: 30px 20px;
     margin-top: 50px;
-    background-color: #E9ECEF; /* Light gray for footer */
+    background-color: #E9ECEF;
     color: #555555;
     font-size: 0.9em;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
@@ -281,14 +271,13 @@ footer {
 }
 
 body.dark-mode footer {
-    background-color:#333; /* Darker blue for dark mode footer */
+    background-color:#333;
     color: #E0E0E0;
 }
 
-/* Dark Mode Button Positioning */
 .darkmode-button {
     background-color:#007bff;
-    color: #FFFFFF; /* Set text color to white for light mode button */
+    color: #FFFFFF;
     padding: 0.8rem 1.8rem;
     border: none;
     border-radius: 5px;
@@ -297,30 +286,26 @@ body.dark-mode footer {
     font-weight: 600;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 
-    /* Positioning styles */
-    position: fixed; /* Stays in place when scrolling */
-    bottom: 20px;    /* 20px from the bottom */
-    right: 20px;     /* 20px from the right */
-    z-index: 1000;   /* Ensures it stays on top of other content */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for visibility */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .darkmode-button:hover {
-    /* Changed to a solid blue color for light mode hover */
     background-color: #4d94ff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 body.dark-mode .darkmode-button {
-    background-color: #007bff
-    ; /* Dark mode button background */
-    color: #000; /* Text color is black for dark mode button */
+    background-color: #007bff;
+    color: #000;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .weekly-calendar-grid {
-        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+        grid-template-columns: 1fr;
     }
 
     .banner-title {
@@ -332,7 +317,7 @@ body.dark-mode .darkmode-button {
     }
 
     nav ul li {
-        margin: 0 10px; /* Reduce spacing on smaller screens */
+        margin: 0 10px;
     }
 
     nav ul li a {

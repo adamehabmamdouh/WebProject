@@ -1,4 +1,4 @@
-/* Login Page Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -100,7 +100,7 @@ body {
     text-decoration: underline;
 }
 
-/* Dark Mode Styles */
+
 body.dark-mode {
     background-color: #1a1a1a;
 }
@@ -144,7 +144,7 @@ body.dark-mode {
     color: #adb5bd;
 }
 
-/* Dark Mode Toggle Button */
+
 .darkmode-button {
     position: fixed;
     top: 1rem;
