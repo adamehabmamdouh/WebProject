@@ -27,7 +27,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false, // Not strictly required if username is the primary identifier
         trim: true
+    },
+        membershipType: { // New field for membership
+        type: String,
+        enum: ['None', 'Basic', 'Premium', 'Elite'], // Define allowed values
+        default: 'None' // Default membership type
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
+
 }, {
     timestamps: true // Mongoose automatically adds `createdAt` and `updatedAt`
 });

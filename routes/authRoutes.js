@@ -2,93 +2,71 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User'); // Import the User model
 
-// ... existing code ...
-// ... existing code ...
+// Middleware to check if user is logged in
+const ensureAuthenticated = (req, res, next) => {
+    if (req.session.user) {
+        return next();
+    }
+    res.status(401).json({ error: 'You must be logged in to perform this action.' });
+};
 
-// Create new user route
-router.post('/admin/users', async (req, res) => {
+// ... (existing admin routes and signup/login/logout) ...
+
+// New Route: Update user's membership type
+router.post('/memberships/update', ensureAuthenticated, async (req, res) => {
+    console.log('Received /memberships/update request');
     try {
-        const { username, email, password, isAdmin } = req.body;
+        const userId = req.session.user._id;
+        const { membershipType } = req.body;
 
-        // Check if user already exists
-        const existingUser = await User.findOne({ 
-            $or: [{ username }, { email }] 
-        });
+        console.log('User ID from session:', userId);
+        console.log('Membership Type from request body:', membershipType);
 
-        if (existingUser) {
-            return res.status(400).json({ 
-                error: existingUser.username === username ? 
-                    'Username already exists' : 
-                    'Email already exists' 
-            });
+        const allowedMembershipTypes = ['Basic', 'Premium', 'Elite'];
+        if (!allowedMembershipTypes.includes(membershipType)) {
+            console.log('Invalid membership type:', membershipType);
+            return res.status(400).json({ error: 'Invalid membership type provided.' });
         }
 
-        // Create new user with admin role if specified
-        const newUser = new User({ 
-            username, 
-            email, 
-            password,
-            isAdmin: isAdmin || false // Set admin role
-        });
-        await newUser.save();
+        const user = await User.findById(userId);
 
-        res.status(201).json({ 
-            message: 'User created successfully',
-            user: {
-                _id: newUser._id,
-                username: newUser.username,
-                email: newUser.email,
-                isAdmin: newUser.isAdmin
-            }
-        });
-    } catch (err) {
-        console.error('Error creating user:', err);
-        res.status(500).json({ error: 'Failed to create user' });
-    }
-});
-
-// ... existing code ...
-// Delete user route
-router.delete('/admin/users/:id', async (req, res) => {
-    try {
-        const user = await User.findByIdAndDelete(req.params.id);
         if (!user) {
-            return res.status(404).json({ error: 'User not found' });
+            console.log('User not found in DB for ID:', userId);
+            return res.status(404).json({ error: 'User not found.' });
         }
-        res.json({ message: 'User deleted successfully' });
+
+        console.log('User found:', user.username, 'Current membership:', user.membershipType);
+
+        user.membershipType = membershipType;
+        await user.save(); // THIS IS THE LINE THAT SAVES TO MONGODB
+
+        // Update session with new membership type
+        req.session.user.membershipType = membershipType;
+        console.log('Membership updated in DB and session for user:', user.username);
+
+        res.status(200).json({ message: `Membership updated to ${membershipType} successfully!` });
     } catch (err) {
-        console.error('Error deleting user:', err);
-        res.status(500).json({ error: 'Failed to delete user' });
+        console.error('Error updating membership:', err);
+        // Check specific error types:
+        if (err.name === 'CastError' && err.path === '_id') {
+            console.error('Invalid User ID format:', err.message);
+        }
+        res.status(500).json({ error: 'Failed to update membership.' });
     }
 });
 
-// ... existing code ...
 
-// Admin route to display users
-router.get('/admin', async (req, res) => {
-    try {
-        // Fetch all users from MongoDB, excluding password field
-        const users = await User.find({}).select('-password');
-        res.render('admin', {
-            title: 'Admin Panel',
-            users: users
-        });
-    } catch (err) {
-        console.error('Error fetching users:', err);
-        res.status(500).send('Error loading admin panel');
-    }
-});
-
-// ... existing code ...
 // --- GET /signup - Display the signup form ---
 router.get('/signup', (req, res) => {
-    // Render the signup.ejs template
+    // If user is already logged in, redirect them away from signup
+    if (req.session.user) {
+        return res.redirect('/memberships'); // Or another appropriate page
+    }
     res.render('signup', {
         title: res.__('signup_title'), // Using i18n
         errors: req.session.errors, // Pass any validation errors
         formData: req.session.formData // Pass back form data on error
     });
-    // Clear session messages after rendering
     req.session.errors = null;
     req.session.formData = null;
 });
@@ -96,9 +74,8 @@ router.get('/signup', (req, res) => {
 // --- POST /signup - Handle signup form submission ---
 router.post('/signup', async (req, res, next) => {
     const { username, email, password, confirmPassword } = req.body;
-    let errors = {}; // Object to store validation errors
+    let errors = {};
 
-    // Basic server-side validation
     if (!username || !email || !password || !confirmPassword) {
         errors.fields = res.__('all_fields_required');
     }
@@ -108,16 +85,14 @@ router.post('/signup', async (req, res, next) => {
     if (password && password.length < 6) {
         errors.passwordLength = res.__('password_min_length', 6);
     }
-    // You can add more complex regex validation for email/username here
 
     if (Object.keys(errors).length > 0) {
         req.session.errors = errors;
-        req.session.formData = { username, email }; // Keep other fields for re-population
-        return res.redirect('/signup'); // Redirect back to signup form with errors
+        req.session.formData = { username, email };
+        return res.redirect('/signup');
     }
 
     try {
-        // Check if user already exists
         const existingUser = await User.findOne({ $or: [{ username: username }, { email: email }] });
         if (existingUser) {
             if (existingUser.username === username) {
@@ -131,42 +106,42 @@ router.post('/signup', async (req, res, next) => {
             return res.redirect('/signup');
         }
 
-        // Create new user
         const newUser = new User({ username, email, password });
         await newUser.save();
 
-        // Log the user in immediately after signup (optional)
         req.session.user = {
             _id: newUser._id,
             username: newUser.username,
-            email: newUser.email
+            email: newUser.email,
+            membershipType: newUser.membershipType // Ensure membershipType is in session
         };
-        req.session.successMessage = res.__('signup_success'); // Set a success message for a flash message
+        req.session.successMessage = res.__('signup_success');
 
-        // Redirect to a dashboard or homepage
-        res.redirect('/'); // Or '/dashboard'
+        res.redirect('/memberships'); // Redirect to memberships page after signup
     } catch (err) {
-        // Handle database errors (e.g., duplicate key if unique constraint failed)
         console.error('Signup error:', err);
-        if (err.code === 11000) { // MongoDB duplicate key error
+        if (err.code === 11000) {
             if (err.keyPattern.username) errors.usernameExists = res.__('username_already_exists');
             if (err.keyPattern.email) errors.emailExists = res.__('email_already_exists');
         }
         req.session.errors = errors;
         req.session.formData = { username, email };
-        next(err); // Pass to general error handler
-        res.redirect('/signup'); // Redirect back if error can be shown on form
+        next(err);
+        res.redirect('/signup');
     }
 });
 
 // --- GET /login - Display the login form ---
 router.get('/login', (req, res) => {
+    // If user is already logged in, redirect them away from login
+    if (req.session.user) {
+        return res.redirect('/memberships'); // Or another appropriate page
+    }
     res.render('login', {
-        title: res.__('login_title'), // Using i18n
-        error: req.session.loginError, // Pass login error message
-        successMessage: req.session.successMessage // Pass success message (e.g. from signup)
+        title: res.__('login_title'),
+        error: req.session.loginError,
+        successMessage: req.session.successMessage
     });
-    // Clear session messages after rendering
     req.session.loginError = null;
     req.session.successMessage = null;
 });
@@ -181,7 +156,6 @@ router.post('/login', async (req, res) => {
     }
 
     try {
-        // Find user by username or email
         const user = await User.findOne({ $or: [{ username: username }, { email: username }] });
 
         if (!user) {
@@ -189,7 +163,6 @@ router.post('/login', async (req, res) => {
             return res.redirect('/login');
         }
 
-        // Compare submitted password with hashed password
         const isMatch = await user.comparePassword(password);
 
         if (!isMatch) {
@@ -197,13 +170,14 @@ router.post('/login', async (req, res) => {
             return res.redirect('/login');
         }
 
-        // Authentication successful, store user info in session
         req.session.user = {
             _id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            isAdmin: user.isAdmin, // Make sure isAdmin is carried over
+            membershipType: user.membershipType // Ensure membershipType is in session
         };
-        res.redirect('/'); // Redirect to homepage or dashboard
+        res.redirect('/memberships'); // Redirect to memberships page after login
     } catch (err) {
         console.error('Login error:', err);
         req.session.loginError = res.__('login_failed_general');
@@ -216,17 +190,16 @@ router.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
             console.error('Error destroying session:', err);
-            return res.redirect('/'); // Fallback
+            return res.redirect('/');
         }
-        res.clearCookie('connect.sid'); // Clear session cookie
-        res.redirect('/login'); // Redirect to login page after logout
+        res.clearCookie('connect.sid');
+        res.redirect('/login');
     });
 });
 
-// Admin route to display users
+// Admin routes (kept for completeness, assuming they are in this file)
 router.get('/admin', async (req, res) => {
     try {
-        // Fetch all users from MongoDB, excluding password field
         const users = await User.find({}).select('-password');
         res.render('admin', {
             title: 'Admin Panel',
@@ -238,7 +211,6 @@ router.get('/admin', async (req, res) => {
     }
 });
 
-// Delete user route
 router.delete('/admin/users/:id', async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
@@ -252,12 +224,10 @@ router.delete('/admin/users/:id', async (req, res) => {
     }
 });
 
-// Create new user route
 router.post('/admin/users', async (req, res) => {
     try {
         const { username, email, password, isAdmin } = req.body;
 
-        // Check if user already exists
         const existingUser = await User.findOne({ 
             $or: [{ username }, { email }] 
         });
@@ -270,12 +240,11 @@ router.post('/admin/users', async (req, res) => {
             });
         }
 
-        // Create new user with admin role if specified
         const newUser = new User({ 
             username, 
             email, 
             password,
-            isAdmin: isAdmin || false // Set admin role
+            isAdmin: isAdmin || false 
         });
         await newUser.save();
 

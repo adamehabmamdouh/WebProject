@@ -10,29 +10,35 @@
     <header class="main-header">
         <nav class="main-navigation">
             <div class="logo">
-                <!-- Assuming your index.html is served at the root -->
                 <a href="/">
                     <img src="/image/logo.png" alt="BigEkramy Logo">
                     Big Ekramy
                 </a>
             </div>
+
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li> <!-- Assuming a route for /about -->
-                <li><a href="/memberships" class="active">Memberships</a></li> <!-- Assuming a route for /memberships -->
-                <li><a href="/login">Login</a></li> <!-- Assuming a route for /login -->
+                <li><a href="/about">About</a></li>
+                <li><a href="/memberships" class="active">Memberships</a></li>
+                <% if (!user) { %>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
             </ul>
+
             <div class="nav-actions">
-                <button onclick="window.location.href='/signup'">Sign Up</button> <!-- Assuming a route for /signup -->
-                <button onclick="window.location.href='/login'">Login</button>
-            </div>
-            <button class="mobile-nav-toggle">☰</button>
-            <div class="nav-actions">
+                <% if (!user) { %>
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                    <button onclick="window.location.href='/login'">Login</button>
+                <% } else { %>
+                    <span style="margin-right: 10px;">Welcome, <%= user.username %>!</span>
+                    <button onclick="window.location.href='/logout'">Logout</button>
+                <% } %>
                 <button class="dark-mode-toggle"><%= __('dark_mode_button') %></button>
-                <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
+
+            <button class="mobile-nav-toggle" aria-controls="nav-links" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
@@ -59,9 +65,9 @@
                 <li>Free Wi-Fi</li>
                 <li>Basic fitness assessment</li>
             </ul>
-            <a href="#" class="membership-button" data-plan-name="Basic Membership" data-plan-price="$29.99">Join Now</a>
+            <a href="#" class="membership-button" data-plan-name="Basic" data-plan-price="$29.99">Join Now</a>
         </div>
-        
+
         <div class="membership-card" style="border: 2px solid #FFD700;">
             <div class="popular-badge">MOST POPULAR</div>
             <h3>Premium</h3>
@@ -73,9 +79,9 @@
                 <li>1 free personal training session</li>
                 <li>Sauna & steam room access</li>
             </ul>
-            <a href="#" class="membership-button" data-plan-name="Premium Membership" data-plan-price="$49.99">Join Now</a>
+            <a href="#" class="membership-button" data-plan-name="Premium" data-plan-price="$49.99">Join Now</a>
         </div>
-        
+
         <div class="membership-card">
             <h3>Elite</h3>
             <div class="membership-price">$79.99<span>/month</span></div>
@@ -88,46 +94,50 @@
                 <li>Complimentary towel service</li>
                 <li>Guest passes (2/month)</li>
             </ul>
-            <a href="#" class="membership-button" data-plan-name="Elite Membership" data-plan-price="$79.99">Join Now</a>
+            <a href="#" class="membership-button" data-plan-name="Elite" data-plan-price="$79.99">Join Now</a>
         </div>
 
+        <% if (user) { %>
         <div id="paymentModal" class="modal">
+        <% } else { %>
+        <div id="paymentModal" class="modal" style="display: none;">
+        <% } %>
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
                 <h2>Complete Your Membership</h2>
                 <p class="selected-plan">You're signing up for: <span id="planName">Basic Membership</span></p>
                 <p class="selected-price">Price: <span id="planPrice">$29.99</span></p>
-                
+
                 <form id="paymentForm">
                     <div class="form-group">
                         <label for="cardName">Name on Card</label>
                         <input type="text" id="cardName" placeholder="John Smith" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="cardNumber">Card Number</label>
                         <div class="card-input-container">
                             <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="expiryDate">Expiry Date</label>
                             <input type="text" id="expiryDate" placeholder="MM/YY" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="cvv">CVV</label>
                             <input type="text" id="cvv" placeholder="123" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Email for Receipt</label>
                         <input type="email" id="email" placeholder="your@email.com" required>
                     </div>
-                    
+
                     <button type="submit" class="payment-button">Complete Payment</button>
                 </form>
             </div>
@@ -158,22 +168,22 @@
 
     <div class="membership-faq">
         <h2>Frequently Asked Questions</h2>
-        
+
         <div class="faq-item">
             <div class="faq-question">What's included in the membership fee?</div>
             <div class="faq-answer">All memberships include access to our facilities during operating hours, locker rooms, and basic amenities. Higher tiers include additional benefits as listed.</div>
         </div>
-        
+
         <div class="faq-item">
             <div class="faq-question">Can I freeze my membership?</div>
             <div class="faq-answer">Yes, you can freeze your membership for up to 3 months per year for medical reasons or travel. A small monthly maintenance fee applies during freezes.</div>
         </div>
-        
+
         <div class="faq-item">
             <div class="faq-question">Do you offer student discounts?</div>
             <div class="faq-answer">We offer 15% discounts for students with valid ID. Please bring your ID when signing up.</div>
         </div>
-        
+
         <div class="faq-item">
             <div class="faq-question">What's your cancellation policy?</div>
             <div class="faq-answer">You can cancel anytime with 30 days notice. No long-term contracts required.</div>
@@ -202,7 +212,9 @@
         </p>
     </div>
 
+    <script>
+    const isLoggedIn = <%= JSON.stringify(!!user) %>;
+</script>
+    <script src="/js/Memberships.js"></script>
 </body>
-<!-- Assuming Memberships.js is in public/js -->
-<script src="/js/Memberships.js"></script>
 </html>
