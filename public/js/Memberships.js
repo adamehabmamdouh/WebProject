@@ -228,55 +228,77 @@ function initMembershipSelection() {
         return name.length >= 2 && /^[a-zA-Z\s.'-]+$/.test(name);
     }
 
-    function validateCardNumber(number) {
-        const cleanedNumber = number.replace(/\s/g, ''); // Remove spaces
-        if (!/^\d+$/.test(cleanedNumber)) {
-            return false; // Must contain only digits
-        }
-
-        const len = cleanedNumber.length;
-
-        // Check for common card lengths based on starting digits (IIN)
-        let isValidLength = false;
-        if ((/^4/.test(cleanedNumber) && (len === 13 || len === 16))) { // Visa (13 or 16 digits, starts with 4)
-            isValidLength = true;
-        } else if ((/^5[1-5]/.test(cleanedNumber) && len === 16)) { // Mastercard (16 digits, starts with 51-55)
-            isValidLength = true;
-        } else if ((/^3[47]/.test(cleanedNumber) && len === 15)) { // American Express (15 digits, starts with 34 or 37)
-            isValidLength = true;
-        } else if ((/^6(?:011|5[0-9]{2})/.test(cleanedNumber) && len === 16)) { // Discover (16 digits, starts with 6011 or 65)
-            isValidLength = true;
-        } else if ((/^(?:2131|1800|35\d{3})/.test(cleanedNumber) && (len === 16 || len === 19))) { // JCB (16 or 19 digits)
-            isValidLength = true;
-        } else if ((/^3(?:0[0-5]|[68][0-9])/.test(cleanedNumber) && len === 14)) { // Diners Club (14 digits)
-             isValidLength = true;
-        } else if ((/^62/.test(cleanedNumber) && (len >= 16 && len <= 19))) { // UnionPay (16-19 digits)
-            isValidLength = true;
-        }
-
-
-        if (!isValidLength) {
-            return false;
-        }
-
-        // Luhn Algorithm (Mod 10 algorithm) for basic checksum validation
-        let sum = 0;
-        let parity = len % 2;
-        for (let i = 0; i < len; i++) {
-            let digit = parseInt(cleanedNumber.charAt(i), 10);
-            if (i % 2 == parity) {
-                digit *= 2;
-            }
-            if (digit > 9) {
-                digit -= 9;
-            }
-            sum += digit;
-        }
-        const isValidLuhn = (sum % 10) == 0;
-        
-        return isValidLuhn;
+function validateCardNumber(number) {
+    const cleanedNumber = number.replace(/\s/g, ''); // Remove spaces
+    
+    // 1. Must contain only digits
+    if (!/^\d+$/.test(cleanedNumber)) {
+        return false; 
     }
 
+    const len = cleanedNumber.length;
+
+    // 2. Basic length check for common card numbers (13 to 19 digits)
+    // This is a general check for ANY credit card number.
+    if (len < 13 || len > 19) {
+        return false;
+    }
+
+    // 3. Luhn Algorithm (Mod 10 algorithm) for basic checksum validation
+    let sum = 0;
+    let parity = len % 2; 
+    
+    for (let i = 0; i < len; i++) {
+        let digit = parseInt(cleanedNumber.charAt(i), 10);
+        
+        // Double every second digit from the right (0-indexed from left)
+        if ((i % 2) === parity) { 
+            digit *= 2;
+        }
+        
+        if (digit > 9) {
+            digit -= 9; 
+        }
+        sum += digit;
+    }
+    const isValidLuhn = (sum % 10) === 0;
+    
+    if (!isValidLuhn) {
+        return false;
+    }
+
+    // If you reach here, the card number has passed the general digit, length, and Luhn checks.
+    // It is considered a generally valid card number format.
+    
+    // --- (Optional) Card Brand Specific Checks (for display/additional logic, not rejection) ---
+    // If you uncomment this section and make it return `false`, then you will *only* accept
+    // the specific brands listed. Keep it commented out if you want to accept any valid format.
+
+    /*
+    let cardBrandIdentified = false;
+    if ((/^4/.test(cleanedNumber) && (len === 13 || len === 16))) { // Visa
+        cardBrandIdentified = true;
+    } else if ((/^5[1-5]/.test(cleanedNumber) && len === 16)) { // Mastercard
+        cardBrandIdentified = true;
+    } else if ((/^3[47]/.test(cleanedNumber) && len === 15)) { // American Express
+        cardBrandIdentified = true;
+    } else if ((/^6(?:011|5[0-9]{2})/.test(cleanedNumber) && len === 16)) { // Discover
+        cardBrandIdentified = true;
+    } else if ((/^(?:2131|1800|35\d{3})/.test(cleanedNumber) && (len === 16 || len === 19))) { // JCB
+        cardBrandIdentified = true;
+    } else if ((/^3(?:0[0-5]|[68][0-9])/.test(cleanedNumber) && (len === 14 || len === 16))) { // Diners Club (Added 16 for some variations)
+         cardBrandIdentified = true;
+    } else if ((/^62/.test(cleanedNumber) && (len >= 16 && len <= 19))) { // UnionPay
+        cardBrandIdentified = true;
+    }
+
+    // You might use `cardBrandIdentified` to, for example, show a card logo.
+    // console.log("Card brand identified:", cardBrandIdentified ? "Known Brand" : "Unknown Brand");
+    */
+
+    // If we've passed all the essential validation steps (digits, length, Luhn), return true.
+    return true; 
+}
     function validateExpiryDate(date) {
         // Regex for MM/YY format
         const dateRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
